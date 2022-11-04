@@ -2,34 +2,20 @@
 using std::cout;
 
 #include "Vetor3.h"
+#include "Vetor3.cpp"
 
-const float G = 6.668e-11; // Constante gravitacional
-const float ATRITO = 1.4e-2; // Constante de atrito (usou-se valor aleatorio)
+#include "Materia.h"
+#include "Materia.cpp"
 
 int main(){
-    Vetor3 vetor;
-    cout << vetor.getMagnitude();
+    Vetor3 speed( 0, 100, 0 );
+    Vetor3 position( 0, 0, 0 );
+    Vetor3 force(5, 0, 0);
+
+    Materia caixa( position, speed, 1 );
+    caixa.aplicarForca( force );
+    caixa.updateMateria();
+    
+    cout << caixa;
+    caixa.displayMateria();
 }
-
-// class Fisica : public Vetor{
-// public:
-//     Fisica():Vetor(){}
-//     void leiInercia(){
-        
-//     }
-//     void leiAcaoReacao(){
-        
-//     }
-//     void leiForca(){
-        
-//     }
-// };
-
-
-// class Objeto : public Fisica{
-// public:
-//     struct Corpo{
-//         float massa;
-//         Vetor posicao;
-//     };
-// };
