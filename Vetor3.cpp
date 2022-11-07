@@ -3,7 +3,7 @@
 #include <iostream>
 using std::cout;
 
-Vetor3::Vetor3()
+Vetor3::Vetor3( )
 :x( 0.0 ), y( 0.0 ), z( 0.0 ){
 
 }
@@ -19,11 +19,11 @@ Vetor3::Vetor3( const Vetor3 &vOther ){
     this->z = vOther.z;
 }
 
-Vetor3::~Vetor3(){
+Vetor3::~Vetor3( ){
 
 }
 
-const float Vetor3::getMagnitude( ){
+float Vetor3::getMagnitude( ){
     return std::sqrt( x*x + y*y + z*z );
 }
 
@@ -32,11 +32,11 @@ const float Vetor3::getX( ){
 }
 
 const float Vetor3::getY( ){
-    return x;
+    return y;
 }
 
 const float Vetor3::getZ( ){
-    return x;
+    return z;
 }
 
 void Vetor3::setX( const float x ){
@@ -57,7 +57,7 @@ bool Vetor3::operator==( const Vetor3 &vOther ){
 }
 
 ostream& operator<<(ostream& os, const Vetor3 &vOther){
-    os << "[" << vOther.x << ", " << vOther.y << ", " << vOther.z << "]";
+    os << "x:" << vOther.x << " y:" << vOther.y << " z:" << vOther.z;
     return os;
 }
 
@@ -70,6 +70,17 @@ Vetor3 Vetor3::operator=( const Vetor3 &vOther ){
     this->x = vOther.x;
     this->y = vOther.y;
     this->z = vOther.z;
+
+    return *this;
+}
+
+Vetor3 Vetor3::operator=( const float escalar ){
+    /*
+    * Atribui o mesmo escalar a todos os eixos: x, y e z.
+    */
+    this->x = escalar;
+    this->y = escalar;
+    this->z = escalar;
 
     return *this;
 }

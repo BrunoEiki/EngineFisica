@@ -37,6 +37,7 @@ public:
     Vetor3 operator=(const Vetor3 & );
     Vetor3 operator!( );
 
+    Vetor3 operator=( const float escalar );
     Vetor3 operator+( const Vetor3 & );
     Vetor3 operator-( const Vetor3 & );
     Vetor3 operator*( const float );
@@ -47,7 +48,7 @@ public:
 
 
 // MÉTODOS
-    const float getMagnitude( );
+    float getMagnitude( );
     const float getX( );
     const float getY( );
     const float getZ( );
