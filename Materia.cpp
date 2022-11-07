@@ -63,22 +63,31 @@ void Materia::aplicarForca( const Vetor3 &fOther ){
     this->forca = fOther;
 }
 
-// void Materia::displayMateria( ){
-//     std::cout << "\nVelocidade: " << velocidade;
-//     std::cout << "\nPosicao: " << posicao;
-//     std::cout << "\nAceleracao: " << aceleracao;
-//     std::cout << "\nTempo: " << tempoFinal << "\n";
-// }
+void Materia::displayMateria( ) {
+    std::cout << "\nVelocidade: " << velocidade;
+    std::cout << "\nPosicao: " << posicao;
+    std::cout << "\nAceleracao: " << aceleracao;
+    std::cout << "\nTempo: " << tempoFinal;
+}
 
-// float Materia::getVelocidade(){
-//     return velocidade.getMagnitude();
-// }
+void Materia::resetarVetores( ) {
 
-// const float Materia::getMagnitude( const Vetor3 &vOther ){
-//     return (vOther.getX()*vOther.getX() + vOther.getY()*vOther.getY() + vOther.getZ()*vOther.getZ());
-// }
+// RESETAR FORCA TAMBEM ?
+    
+    velocidade.setX( 0.0 );
+    velocidade.setY( 0.0 );
+    velocidade.setZ( 0.0 );
 
-ostream& operator<<( ostream& os, const Materia &mOther ){
+    posicao.setX( 0.0 );
+    posicao.setY( 0.0 );
+    posicao.setZ( 0.0 );
+
+    aceleracao.setX( 0.0 );
+    aceleracao.setY( 0.0 );
+    aceleracao.setZ( 0.0 );
+}
+
+ostream& operator<<( ostream& os, const Materia &mOther ) {
     // POR QUE ISSO NN FUNCIONA??
     // Talvez porque estou acessando atributo não-const usando objeto const
     // Quando retirei const de "const Materia &mOther" no parametro
@@ -98,9 +107,9 @@ ostream& operator<<( ostream& os, const Materia &mOther ){
 
 
 bool Materia::operator==( const Materia &mOther){
-    if (this->velocidade == mOther.velocidade && this->aceleracao == mOther.aceleracao &&
-        this->posicao == mOther.posicao && this->forca == mOther.forca &&
-        this->massaInverso == mOther.massaInverso){
+    if (this->velocidade == mOther.velocidade && this->aceleracao == mOther.aceleracao
+        && this->posicao == mOther.posicao && this->forca == mOther.forca
+        && this->massaInverso == mOther.massaInverso){
             return true;
         }
     return false;

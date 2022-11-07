@@ -38,6 +38,7 @@ public:
     void updateMateria( );
     void aplicarForca( const Vetor3 & );
     void displayMateria( );
+    void resetarVetores( );
 
     float getVelocidade();
     void getPosicao();
