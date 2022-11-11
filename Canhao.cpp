@@ -7,14 +7,14 @@ Canhao::Canhao( )
 
 }
 
-Canhao::Canhao( int vida, float forca ) {
+Canhao::Canhao( int vida, Vetor3 forca ) {
     if (vida < 0) {
         forcaDisparo = 5;
     } else {
         this->vida = vida;
     }
 
-    if (forca < 0.0) {
+    if (forca.getMagnitude() < 0.0) {
         forcaDisparo = 2.0;
     } else {
         forcaDisparo = forca;
@@ -35,7 +35,7 @@ Canhao::~Canhao( ){
 // --------------- METODOS ------------------
 
 void Canhao::disparar( ){
-    Vetor3 f( forcaDisparo, forcaDisparo, 0.0 );
+    Vetor3 f( forcaDisparo, forcaDisparo, 0.0 ); 
     bala.aplicarForca( f );
     bala.updateMateria( );
 }

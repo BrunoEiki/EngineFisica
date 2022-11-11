@@ -1,13 +1,39 @@
 #include "Materia.h"
 
+
+// ---------- CONSTRUTORES -------------------
+
 Materia::Materia()
-: posicao( ), velocidade( ), massaInverso( 1.0 ), tempoInicial( 0 ){
-    Vetor3 a(0, GRAVIDADETERRA, 0);
+: massaInverso( 1.0 ), forca( 0, GRAVIDADETERRA*(1/massaInverso) ), tempoInicial( 0 ){
+    Vetor3 a( 0, GRAVIDADETERRA, 0 );
     aceleracao = a;
 }
 
-Materia::Materia(Vetor3 posInicial, Vetor3 velInicial, float massa, int temp=0 )
-: posicao( posInicial ), velocidade( velInicial ), forca( ){
+Materia::Materia( float massa, int temp = 0 ) {
+
+    if ( massa <= 0.0 ) {
+        massaInverso = 1.0; 
+    } else {
+        massaInverso = 1/massa;
+    }
+    
+    Vetor3 a( 0, GRAVIDADETERRA, 0 );
+    aceleracao = a;
+
+    Vetor3 forcaAplicada(0, GRAVIDADETERRA*(1/massaInverso), 0);
+    forca = forcaAplicada;
+
+    if (temp < 0){
+        tempoInicial = 0;
+    } else{
+        tempoInicial = temp;
+    }
+
+    tempoFinal = tempoInicial + 1;
+}
+
+Materia::Materia(Vetor3 posInicial, Vetor3 velInicial, float massa, int temp = 0 )
+: posicao( posInicial ), velocidade( velInicial ) {
 
     if ( massa <= 0.0 ) {
         massaInverso = 1.0; 
@@ -15,10 +41,13 @@ Materia::Materia(Vetor3 posInicial, Vetor3 velInicial, float massa, int temp=0 )
         massaInverso = 1/massa;
     }
     
-    Vetor3 a(0, GRAVIDADETERRA, 0);
+    Vetor3 a( 0, GRAVIDADETERRA, 0 );
     aceleracao = a;
 
-    if (temp < tempoInicial){
+    Vetor3 forcaAplicada(0, GRAVIDADETERRA*(1/massaInverso), 0);
+    forca = forcaAplicada;
+
+    if (temp < 0){
         tempoInicial = 0;
     } else{
         tempoInicial = temp;
@@ -38,66 +67,51 @@ Materia::~Materia( ){
 
 }
 
+
+// --------------- METODOS ------------------
+
 void Materia::updateMateria( ){
-
+'''
+Equações de Newton-Euler para dinâmica de um corpo rígido
+'''
     posicao = posicao + ( velocidade * ( tempoFinal - tempoInicial ) );
-
-    Vetor3 auxForca = forca;
-    auxForca.setX( auxForca.getX() * massaInverso );
-    auxForca.setY( auxForca.getY() * massaInverso );
-    auxForca.setZ( auxForca.getZ() * massaInverso );
-
-// MODIFICAR ERRO CONSERTAR BLA BLA
-    aceleracao = aceleracao + (auxForca * massaInverso);
- 
+    aceleracao = aceleracao + (forca * massaInverso);
     velocidade = velocidade + aceleracao * ( tempoFinal - tempoInicial );
 
     tempoInicial = tempoFinal;
     tempoFinal += 1;
 
+// Reseta força para o peso apenas, pois a força aplicada é momentanea
+    Vetor3 forcaAplicada(0, GRAVIDADETERRA*(1/massaInverso), 0);
+    forca = forcaAplicada;
 }
 
 
-void Materia::aplicarForca( const Vetor3 &fOther ){
-    cout << "\nFoi aplicado uma forca " << fOther << " no objeto\n\n";
-    this->forca = fOther;
+void Materia::aplicarForca( const Vetor3 &forcaAplicada ) {
+    cout << "\nFoi aplicado uma forca " << forcaAplicada << " no objeto\n\n";
+
+    this->forca += forcaAplicada;
 }
 
-void Materia::displayMateria( ) {
-    std::cout << "\nVelocidade: " << velocidade;
-    std::cout << "\nPosicao: " << posicao;
-    std::cout << "\nAceleracao: " << aceleracao;
-    std::cout << "\nTempo: " << tempoFinal;
+void Materia::somarMassa( float massa ){
+    this->massaInverso += 1/massa;
 }
 
-void Materia::resetarVetores( ) {
-
-// RESETAR FORCA TAMBEM ?
-    
-    velocidade.setX( 0.0 );
-    velocidade.setY( 0.0 );
-    velocidade.setZ( 0.0 );
-
-    posicao.setX( 0.0 );
-    posicao.setY( 0.0 );
-    posicao.setZ( 0.0 );
-
-    aceleracao.setX( 0.0 );
-    aceleracao.setY( 0.0 );
-    aceleracao.setZ( 0.0 );
+float Materia::getForca( ){
+    return forca;
 }
+
+// void Materia::resetarAceleracao( ) {
+//     aceleracao.setX( 0.0 );
+//     aceleracao.setY( GRAVIDADETERRA );
+//     aceleracao.setZ( 0.0 );
+// }
+
+
+// ---------- SOBRECARGA DE OPERADORES -----------
 
 ostream& operator<<( ostream& os, const Materia &mOther ) {
-    // POR QUE ISSO NN FUNCIONA??
-    // Talvez porque estou acessando atributo não-const usando objeto const
-    // Quando retirei const de "const Materia &mOther" no parametro
-    // ele começou a funcionar.
-    // [https://stackoverflow.com/questions/56980750/call-non-const-function-on-a-const-object]
-    
-    // Alternativa: usar getMagnitude( const Vetor3 & const )
-    // os << mOther.getMagnitude( mOther.velocidade );
-    
-    os << "Massa: " << 1/mOther.massaInverso << "kg\n"
+    os << "Massa: " << 1/(mOther.massaInverso) << "kg\n"
        << "Posicao: " << mOther.posicao << "\n"
        << "Velocidade: " << mOther.velocidade << "\n"
        << "Aceleracao: " << mOther.aceleracao << "\n"
@@ -116,8 +130,7 @@ bool Materia::operator==( const Materia &mOther){
 }
 
 bool Materia::operator!=( const Materia &mOther ){
-    if (*this != mOther) return true;
-    return false;
+    return !(*this == mOther);
 }
 
 Materia Materia::operator=( const Materia &mOther ){

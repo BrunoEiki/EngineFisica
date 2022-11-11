@@ -8,9 +8,9 @@ class Canhao : public Materia{
     friend ostream& operator<<( ostream &, const Canhao & );
 
 private:
-    int vida;            // quantidade de disparos que pode fazer
-    float forcaDisparo;  // Forcao aplicado na bala
-    Materia bala;        // objeto a ser disparado
+    int vida;                // quantidade de disparos que pode fazer
+    float forcaDisparo;      // Forcao aplicado na bala
+    Materia bala( 5.5 );     // objeto a ser disparado (com massa 5.5kg)
 
 public:
 // Construtores

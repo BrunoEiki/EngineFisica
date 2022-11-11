@@ -3,6 +3,8 @@
 #include <iostream>
 using std::cout;
 
+// ---------- CONSTRUTORES -------------------
+
 Vetor3::Vetor3( )
 :x( 0.0 ), y( 0.0 ), z( 0.0 ){
 
@@ -22,6 +24,10 @@ Vetor3::Vetor3( const Vetor3 &vOther ){
 Vetor3::~Vetor3( ){
 
 }
+
+
+
+// --------------- METODOS ------------------
 
 float Vetor3::getMagnitude( ){
     return std::sqrt( x*x + y*y + z*z );
@@ -48,6 +54,11 @@ void Vetor3::setY( const float y ){
 void Vetor3::setZ( const float z ){
     this->z = z;    
 }
+
+
+
+// ---------- SOBRECARGA DE OPERADORES -----------
+
 
 bool Vetor3::operator==( const Vetor3 &vOther ){
     if ( this->x == vOther.x && this->y == vOther.y && this->z == vOther.z ){

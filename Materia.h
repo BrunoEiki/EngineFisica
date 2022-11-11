@@ -23,6 +23,7 @@ private:
 public:
 // CONSTRUTORES
     Materia( );
+    Materia( float , int );
     Materia( Vetor3, Vetor3, float, int );
     Materia( const Materia & );
 
@@ -37,15 +38,13 @@ public:
 // MÉTODOS
     void updateMateria( );
     void aplicarForca( const Vetor3 & );
-    void displayMateria( );
+    void somarMassa( float );
+    float getForca( );
+
+// PROCESSO DE TRIAGEM
     void resetarVetores( );
-
-    float getVelocidade();
-    void getPosicao();
-    void getAceleracao();
-
+    
     float getMagnitude( const Vetor3 & );
-
 
 protected:
 // tempo discreto em segundos
