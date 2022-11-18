@@ -1,7 +1,8 @@
+#include "Vetor3.h"
+
 #ifndef MATERIA_H
 #define MATERIA_H
 
-#include "Vetor3.h"
 
 class Materia : public Vetor3{
 
@@ -38,18 +39,17 @@ public:
 // MÉTODOS
     void updateMateria( );
     void aplicarForca( const Vetor3 & );
+    void getMassa( ) const;
     void somarMassa( float );
-    float getForca( );
+    Vetor3 getForca ( ) const;
 
 // PROCESSO DE TRIAGEM
     void resetarVetores( );
     
-    float getMagnitude( const Vetor3 & );
-
 protected:
 // tempo discreto em segundos
     int tempoInicial = 0;
-    int tempoFinal; 
+    int tempoFinal = 1; 
 };
 
 #endif

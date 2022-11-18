@@ -11,7 +11,7 @@ Vetor3::Vetor3( )
 }
 
 Vetor3::Vetor3( const float xin, const float yin, const float zin )
-:x( xin ), y( yin ), z( zin ){
+:x( xin ), y( yin ), z( zin ) {
 
 }
 
@@ -29,19 +29,19 @@ Vetor3::~Vetor3( ){
 
 // --------------- METODOS ------------------
 
-float Vetor3::getMagnitude( ){
+float Vetor3::getMagnitude( ) const {
     return std::sqrt( x*x + y*y + z*z );
 }
 
-const float Vetor3::getX( ){
+float Vetor3::getX( ) const {
     return x;
 }
 
-const float Vetor3::getY( ){
+float Vetor3::getY( ) const {
     return y;
 }
 
-const float Vetor3::getZ( ){
+float Vetor3::getZ( ) const {
     return z;
 }
 

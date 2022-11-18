@@ -1,40 +1,30 @@
 #include "Materia.h"
 
+
 #ifndef FOGUETE_H
 #define FOGUETE_H
 
-class Foguete : public Materia {
-private:
-    
-public:
-    
-}
-
-#ifndef CANHAO_H
-#define CANHAO_H
-
-#include "Materia.h"
 
 class Foguete : public Materia{
 // Sobrecarga para saida
     friend ostream& operator<<( ostream &, const Foguete & );
 
 private:
+    const int PESOFOGUETE = 300;
     float gasolina;           // Limita a distancia que pode percorrer
-    float forcaPropulsao;     // Forca gerado pelo foguete
-    Materia foguete( 300 );   // massa do foguete eh de 300 kg
+    Materia foguete;   // massa do foguete eh de 300 kg
 
 public:
 // Construtores
     Foguete( );
-    Foguete( int, float );
+    Foguete( int );
     Foguete( const Foguete & );
 
 // Destrutor
     ~Foguete( );
 
 // Metodos
-    void disparar( );
+    void combustao( );
 
 // Sobrecarga de Operadores
     bool operator==( const Foguete & );

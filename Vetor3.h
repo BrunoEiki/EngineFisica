@@ -1,10 +1,10 @@
-#ifndef VETOR3_H
-#define VETOR3_H
-
 #include <cmath>
 
 #include <ostream>
 using std::ostream;
+
+#ifndef VETOR3_H
+#define VETOR3_H
 
 class Vetor3{
 
@@ -48,10 +48,10 @@ public:
 
 
 // MÉTODOS
-    float getMagnitude( );
-    const float getX( );
-    const float getY( );
-    const float getZ( );
+    float getMagnitude( ) const;
+    float getX( ) const;
+    float getY( ) const;
+    float getZ( ) const;
 
     void setX( const float );
     void setY( const float );

@@ -3,11 +3,12 @@
 // ---------- CONSTRUTORES -------------------
 
 Canhao::Canhao( )
-:vida( 5 ), forcaDisparo( 2.0 ){
+:vida( 5 ), bala( BALAPESO ), forcaDisparo( 2.0, 0.0, 0.0 ){
 
 }
 
-Canhao::Canhao( int vida, Vetor3 forca ) {
+Canhao::Canhao( int vida, Vetor3 forca )
+:bala( BALAPESO ) {
     if (vida < 0) {
         forcaDisparo = 5;
     } else {
@@ -35,7 +36,7 @@ Canhao::~Canhao( ){
 // --------------- METODOS ------------------
 
 void Canhao::disparar( ){
-    Vetor3 f( forcaDisparo, forcaDisparo, 0.0 ); 
+    Vetor3 f( forcaDisparo.getX(), forcaDisparo.getY(), 0.0 ); 
     bala.aplicarForca( f );
     bala.updateMateria( );
 }

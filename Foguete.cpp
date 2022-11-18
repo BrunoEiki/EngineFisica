@@ -14,30 +14,34 @@
 // VIRTUAL FUNCTION UPDATE_MATERIA()
 
 Foguete::Foguete( )
-:gasolina( 8000 ), forcaPropulsao( 2.0 ){
+:gasolina( 200 ), foguete( PESOFOGUETE + gasolina ) {
 
 }
 
-Foguete::Foguete( int gasolina ) {
+Foguete::Foguete( int gasolina )
+:foguete( PESOFOGUETE ) {
+    /*
+    * PARAMETROS
+    *   gasolina: necessario para propulsao
+    * 
+    * ATRIBUTOS
+    *   massa: massa do foguete + massa da gasolina
+    *   forcaPropulsao: força que aumenta aceleração para cima
+    */
     if ( gasolina < 0 ) {
-        this->gasolina = 8000;
+        this->gasolina = 200;
     } else {
         this->gasolina = gasolina;
     }
     
     foguete.somarMassa( gasolina );
 
-    if (forca.getMagnitude() < 0.0) {
-        forcaPropulsao = 2.0;
-    } else {
-        forcaPropulsao = forca;
-    }
 }
 
-Foguete::Foguete( const Foguete &cOther ) {
-    this->bala = cOther.bala;
+Foguete::Foguete( const Foguete &cOther )
+:foguete( PESOFOGUETE ) {
     this->gasolina = cOther.gasolina;
-    this->forcaPropulsao = cOther.forcaPropulsao;
+    this->foguete = cOther.foguete;
 }
 
 Foguete::~Foguete( ){
@@ -47,36 +51,36 @@ Foguete::~Foguete( ){
 
 // --------------- METODOS ------------------
 
-void Foguete::lancarFoguete( ){
-
-    Vetor3 f( 0.0, forcaPropulsao, 0.0 ); 
-    foguete.aplicarForca( f );
-
-    foguete.updateMateria( );
-}
 
 
 void Foguete::combustao( ){
-    // 1segundo ---gasta--- 20kg gasolina 
-    // 20kg gasolina ---faz---  100
+    if (gasolina >= 10) {
+        // 10Kg de Gasolina = 3100N
+        // Gasta 10kg de gasolina e diminui massa em 10
+        gasolina -= 10;
+        foguete.somarMassa( -10.0 );
 
+        Vetor3 f( 0.0, 10000.0, 0.0 ); 
+        foguete.aplicarForca( f );
     
+    } else {
+        cout << "\nNao ha mais gasolina para propulsao.";
+    }
+    foguete.updateMateria( );
 }
+
 
 // ---------- SOBRECARGA DE OPERADORES -----------
 
 ostream& operator<<( ostream& os, const Foguete &cOther ) {
-    os << "\ngasolina: " << cOther.gasolina << " disparos restantes"
-       << "\nForca aplicada: " << cOther.forcaPropulsao << "N"
-       << "\nBala";
-    
-    foguete.updateMateria( );
+    os << "\nGasolina: " << cOther.gasolina << "Kg"
+       << cOther.foguete;
+
     return os;
 }
 
 bool Foguete::operator==( const Foguete &cOther ) {
-    if ( this-> gasolina == cOther.gasolina && this->forcaPropulsao == cOther.forcaPropulsao
-       && this->bala == cOther.bala){
+    if ( this->gasolina == cOther.gasolina){
         return true;
        }
     return false;
@@ -88,18 +92,17 @@ bool Foguete::operator!=( const Foguete &cOther ) {
 
 Foguete Foguete::operator=( const Foguete &cOther ) {
     this->gasolina = cOther.gasolina;
-    this->forcaPropulsao = cOther.forcaPropulsao;
-    this->bala = cOther.bala;
+    this->foguete = cOther.foguete;
 
     return *this;
 }
 
 Foguete Foguete::operator!( ) {
-    this->gasolina = 0;
-    this->forcaPropulsao = 0;
-
-// Possivel erro
-    this->bala.resetarVetores( );
+    /*
+    * Reseta Foguete para estado inicial
+    */
+    this->gasolina = 200;
+    this->foguete.resetarVetores();
 
     return *this;
 }

@@ -13,23 +13,21 @@ using std::setlocale;
 #include "Canhao.h"
 #include "Canhao.cpp"
 
+#include "Foguete.h"
+#include "Foguete.cpp"
+
+
 int main(){
     setlocale(LC_ALL, "portuguese");
 
-    Canhao canhao;
-    Canhao canhao2 = canhao;
+    Foguete foguete;
 
-    if (canhao == canhao2) {
-        cout << "TRUE";
+    for (int i=0; i<35; i++) {
+        foguete.combustao();
+        if ( i % 2 == 0) {
+            cout << foguete;
+        }
     }
-
-    canhao2 = !canhao2;
-    cout << canhao2;
-
-    cout << canhao;
-    canhao.disparar( );
-    cout << canhao;
-
 }
 
 // Mudanças;

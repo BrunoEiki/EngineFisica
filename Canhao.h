@@ -1,21 +1,25 @@
+#include "Materia.h"
+
+
 #ifndef CANHAO_H
 #define CANHAO_H
 
-#include "Materia.h"
+
 
 class Canhao : public Materia{
 // Sobrecarga para saida
     friend ostream& operator<<( ostream &, const Canhao & );
 
 private:
+    const float BALAPESO = 5.5;
     int vida;                // quantidade de disparos que pode fazer
-    float forcaDisparo;      // Forcao aplicado na bala
-    Materia bala( 5.5 );     // objeto a ser disparado (com massa 5.5kg)
+    Vetor3 forcaDisparo;      // Forcao aplicado na bala
+    Materia bala;     // objeto a ser disparado (com massa 5.5kg)
 
 public:
 // Construtores
     Canhao( );
-    Canhao( int, float );
+    Canhao( int, Vetor3 );
     Canhao( const Canhao & );
 
 // Destrutor

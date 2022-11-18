@@ -3,8 +3,8 @@
 
 // ---------- CONSTRUTORES -------------------
 
-Materia::Materia()
-: massaInverso( 1.0 ), forca( 0, GRAVIDADETERRA*(1/massaInverso) ), tempoInicial( 0 ){
+Materia::Materia( )
+: massaInverso( 1.0 ), forca( 0.0, GRAVIDADETERRA*(1/massaInverso), 0.0 ), tempoInicial( 0 ){
     Vetor3 a( 0, GRAVIDADETERRA, 0 );
     aceleracao = a;
 }
@@ -20,8 +20,7 @@ Materia::Materia( float massa, int temp = 0 ) {
     Vetor3 a( 0, GRAVIDADETERRA, 0 );
     aceleracao = a;
 
-    Vetor3 forcaAplicada(0, GRAVIDADETERRA*(1/massaInverso), 0);
-    forca = forcaAplicada;
+    forca.setY( GRAVIDADETERRA*(1/massaInverso) );
 
     if (temp < 0){
         tempoInicial = 0;
@@ -71,9 +70,9 @@ Materia::~Materia( ){
 // --------------- METODOS ------------------
 
 void Materia::updateMateria( ){
-'''
-Equações de Newton-Euler para dinâmica de um corpo rígido
-'''
+/*
+* Equações de Newton-Euler para dinâmica de um corpo rígido
+*/
     posicao = posicao + ( velocidade * ( tempoFinal - tempoInicial ) );
     aceleracao = aceleracao + (forca * massaInverso);
     velocidade = velocidade + aceleracao * ( tempoFinal - tempoInicial );
@@ -82,7 +81,7 @@ Equações de Newton-Euler para dinâmica de um corpo rígido
     tempoFinal += 1;
 
 // Reseta força para o peso apenas, pois a força aplicada é momentanea
-    Vetor3 forcaAplicada(0, GRAVIDADETERRA*(1/massaInverso), 0);
+    Vetor3 forcaAplicada( 0, GRAVIDADETERRA*(1/massaInverso), 0 );
     forca = forcaAplicada;
 }
 
@@ -90,16 +89,35 @@ Equações de Newton-Euler para dinâmica de um corpo rígido
 void Materia::aplicarForca( const Vetor3 &forcaAplicada ) {
     cout << "\nFoi aplicado uma forca " << forcaAplicada << " no objeto\n\n";
 
-    this->forca += forcaAplicada;
+    this->forca = this->forca + forcaAplicada;
 }
 
 void Materia::somarMassa( float massa ){
-    this->massaInverso += 1/massa;
+    this->massaInverso = 1/(1/this->massaInverso + massa);
 }
 
-float Materia::getForca( ){
+Vetor3 Materia::getForca( ) const {
     return forca;
 }
+
+void Materia::resetarVetores( ) {
+    aceleracao.setX( 0.0 );
+    aceleracao.setY( GRAVIDADETERRA );
+    aceleracao.setZ( 0.0 );
+
+    velocidade.setX( 0.0 );
+    velocidade.setY( 0.0 );
+    velocidade.setZ( 0.0 );
+
+    posicao.setX( 0.0 );
+    posicao.setY( 0.0 );
+    posicao.setZ( 0.0 );
+
+    forca.setX( 0.0 );
+    forca.setY( GRAVIDADETERRA*(1/massaInverso) );
+    forca.setZ( 0.0 );
+}
+
 
 // void Materia::resetarAceleracao( ) {
 //     aceleracao.setX( 0.0 );
@@ -111,11 +129,12 @@ float Materia::getForca( ){
 // ---------- SOBRECARGA DE OPERADORES -----------
 
 ostream& operator<<( ostream& os, const Materia &mOther ) {
-    os << "Massa: " << 1/(mOther.massaInverso) << "kg\n"
-       << "Posicao: " << mOther.posicao << "\n"
-       << "Velocidade: " << mOther.velocidade << "\n"
-       << "Aceleracao: " << mOther.aceleracao << "\n"
-       << "Forca resultante: " << mOther.forca << "\n\n";
+    os << "\nMassa Total: " << 1/(mOther.massaInverso) << "kg"
+       << "\nPosicao: " << mOther.posicao
+       << "\nVelocidade: " << mOther.velocidade
+       << "\nAceleracao: " << mOther.aceleracao
+       << "\nForca resultante: " << mOther.forca
+       << "\nTempo Total: " << mOther.tempoInicial;
     return os;
 }
 
