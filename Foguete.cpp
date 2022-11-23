@@ -2,17 +2,6 @@
 
 // ---------- CONSTRUTORES -------------------
 
-
-// OK Gasolina tem massa
-//    Conforme o tempo passa, a massa diminui
-//    1Kg de gasolina equivale a 1000N de Força
-// OK Força apenas na vertical
-//    Para sair da atmosfera, é preciso gastar pelo menos 7000 Kg
-//    No entanto, se tiver mais de 9000kg, o peso do foguete fica maior que a força de propulsão
-
-// STATIC_CAST
-// VIRTUAL FUNCTION UPDATE_MATERIA()
-
 Foguete::Foguete( )
 :gasolina( 200 ), foguete( PESOFOGUETE + gasolina ) {
 
@@ -44,19 +33,15 @@ Foguete::Foguete( const Foguete &cOther )
     this->foguete = cOther.foguete;
 }
 
-Foguete::~Foguete( ){
+Foguete::~Foguete( ) {
     
 }
 
 
 // --------------- METODOS ------------------
 
-
-
-void Foguete::combustao( ){
-    if (gasolina >= 10) {
-        // 10Kg de Gasolina = 3100N
-        // Gasta 10kg de gasolina e diminui massa em 10
+void Foguete::combustao( ) {
+    if ( gasolina >= 10 ) {
         gasolina -= 10;
         foguete.somarMassa( -10.0 );
 
@@ -73,14 +58,16 @@ void Foguete::combustao( ){
 // ---------- SOBRECARGA DE OPERADORES -----------
 
 ostream& operator<<( ostream& os, const Foguete &cOther ) {
-    os << "\nGasolina: " << cOther.gasolina << "Kg"
-       << cOther.foguete;
+    os << "\n--------STATUS----------"
+       << "\nGasolina: " << cOther.gasolina << "Kg"
+       << cOther.foguete
+       << "\n-----------------------";
 
     return os;
 }
 
 bool Foguete::operator==( const Foguete &cOther ) {
-    if ( this->gasolina == cOther.gasolina){
+    if ( this->gasolina == cOther.gasolina ) {
         return true;
        }
     return false;
@@ -102,7 +89,7 @@ Foguete Foguete::operator!( ) {
     * Reseta Foguete para estado inicial
     */
     this->gasolina = 200;
-    this->foguete.resetarVetores();
+    this->foguete.resetarVetores( );
 
     return *this;
 }

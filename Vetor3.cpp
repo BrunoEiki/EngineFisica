@@ -45,13 +45,13 @@ float Vetor3::getZ( ) const {
     return z;
 }
 
-void Vetor3::setX( const float x ){
+void Vetor3::setX( const float x ) {
     this->x = x;    
 }
-void Vetor3::setY( const float y ){
+void Vetor3::setY( const float y ) {
     this->y = y;    
 }
-void Vetor3::setZ( const float z ){
+void Vetor3::setZ( const float z ) {
     this->z = z;    
 }
 
@@ -61,23 +61,23 @@ void Vetor3::setZ( const float z ){
 
 
 bool Vetor3::operator==( const Vetor3 &vOther ){
-    if ( this->x == vOther.x && this->y == vOther.y && this->z == vOther.z ){
+    if ( this->x == vOther.x && this->y == vOther.y && this->z == vOther.z ) {
         return true;
     }
     return false;
 }
 
-ostream& operator<<(ostream& os, const Vetor3 &vOther){
+ostream& operator<<( ostream& os, const Vetor3 &vOther ) {
     os << "x:" << vOther.x << " y:" << vOther.y << " z:" << vOther.z;
     return os;
 }
 
 
-bool Vetor3::operator!=( const Vetor3 &vOther ){
+bool Vetor3::operator!=( const Vetor3 &vOther ) {
     return !( *this == vOther );
 }
 
-Vetor3 Vetor3::operator=( const Vetor3 &vOther ){
+Vetor3 Vetor3::operator=( const Vetor3 &vOther ) {
     this->x = vOther.x;
     this->y = vOther.y;
     this->z = vOther.z;
@@ -85,7 +85,7 @@ Vetor3 Vetor3::operator=( const Vetor3 &vOther ){
     return *this;
 }
 
-Vetor3 Vetor3::operator=( const float escalar ){
+Vetor3 Vetor3::operator=( const float escalar ) {
     /*
     * Atribui o mesmo escalar a todos os eixos: x, y e z.
     */
@@ -96,7 +96,7 @@ Vetor3 Vetor3::operator=( const float escalar ){
     return *this;
 }
 
-Vetor3 Vetor3::operator!( ){
+Vetor3 Vetor3::operator!( ) {
     this->x *= -1;
     this->y *= -1;
     this->z *= -1;
@@ -104,7 +104,7 @@ Vetor3 Vetor3::operator!( ){
     return *this;
 }
 
-Vetor3 Vetor3::operator+( const Vetor3 &vOther ){
+Vetor3 Vetor3::operator+( const Vetor3 &vOther ) {
     this->x = this->x + vOther.x;
     this->y = this->y + vOther.y;
     this->z = this->z + vOther.z;
@@ -112,7 +112,7 @@ Vetor3 Vetor3::operator+( const Vetor3 &vOther ){
     return *this;
 }
 
-Vetor3 Vetor3::operator-( const Vetor3 &vOther ){
+Vetor3 Vetor3::operator-( const Vetor3 &vOther ) {
     this->x = this->x - vOther.x;
     this->y = this->y - vOther.y;
     this->z = this->z - vOther.z;
@@ -120,7 +120,7 @@ Vetor3 Vetor3::operator-( const Vetor3 &vOther ){
     return *this;
 }
 
-Vetor3 Vetor3::operator*( const float escalar ){
+Vetor3 Vetor3::operator*( const float escalar ) {
     this->x *= escalar;
     this->y *= escalar;
     this->z *= escalar;

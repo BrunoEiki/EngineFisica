@@ -5,7 +5,7 @@
 #define FOGUETE_H
 
 
-class Foguete : public Materia{
+class Foguete : public Materia {
 // Sobrecarga para saida
     friend ostream& operator<<( ostream &, const Foguete & );
 

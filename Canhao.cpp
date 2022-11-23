@@ -3,7 +3,7 @@
 // ---------- CONSTRUTORES -------------------
 
 Canhao::Canhao( )
-:vida( 5 ), bala( BALAPESO ), forcaDisparo( 2.0, 0.0, 0.0 ){
+:vida( 5 ), bala( BALAPESO ), forcaDisparo( 80.0, 80.0, 0.0 ) {
 
 }
 
@@ -16,7 +16,8 @@ Canhao::Canhao( int vida, Vetor3 forca )
     }
 
     if (forca.getMagnitude() < 0.0) {
-        forcaDisparo = 2.0;
+        Vetor3 f( 80.0, 80.0, 0.0 ); 
+        bala.aplicarForca( f );
     } else {
         forcaDisparo = forca;
     }
@@ -28,26 +29,43 @@ Canhao::Canhao( const Canhao &cOther ) {
     this->forcaDisparo = cOther.forcaDisparo;
 }
 
-Canhao::~Canhao( ){
+Canhao::~Canhao( ) {
     
 }
 
 
 // --------------- METODOS ------------------
 
-void Canhao::disparar( ){
+void Canhao::disparar( ) {
+    vida--;
+    bala.resetarVetores( );
+    
     Vetor3 f( forcaDisparo.getX(), forcaDisparo.getY(), 0.0 ); 
     bala.aplicarForca( f );
     bala.updateMateria( );
 }
 
 
+void Canhao::disparar( Vetor3 forca ) {
+    vida--;
+    bala.resetarVetores( );
+
+    Vetor3 f( forca.getX( ), forca.getY( ), forca.getZ( ) ); 
+    bala.aplicarForca( f );
+    bala.updateMateria( );
+}
+
+int Canhao::getVida( ) {
+    return vida;
+}
+
 // ---------- SOBRECARGA DE OPERADORES -----------
 
 ostream& operator<<( ostream& os, const Canhao &cOther ) {
-    os << "\nVida: " << cOther.vida << " disparos restantes"
-       << "\nForca aplicada: " << cOther.forcaDisparo << "N"
-       << "\nBala";
+    os << "\n--------STATUS----------"
+       << "\nVida: " << cOther.vida << " disparos restantes"
+       << cOther.bala
+       << "\n-----------------------";
     return os;
 }
 

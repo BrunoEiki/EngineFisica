@@ -4,7 +4,7 @@
 #define MATERIA_H
 
 
-class Materia : public Vetor3{
+class Materia : public Vetor3 {
 
     friend ostream& operator<<( ostream& os, const Materia & );
 

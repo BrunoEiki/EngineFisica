@@ -6,7 +6,7 @@ using std::ostream;
 #ifndef VETOR3_H
 #define VETOR3_H
 
-class Vetor3{
+class Vetor3 {
 
     /*
     * VETOR3 representa os vetores como definidos na física. Têm 3 dimensões, x, y e z, 

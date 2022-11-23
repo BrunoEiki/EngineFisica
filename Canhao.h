@@ -6,7 +6,7 @@
 
 
 
-class Canhao : public Materia{
+class Canhao : public Materia {
 // Sobrecarga para saida
     friend ostream& operator<<( ostream &, const Canhao & );
 
@@ -27,6 +27,9 @@ public:
 
 // Metodos
     void disparar( );
+    void disparar( Vetor3 );
+    int getVida( );
+
 
 // Sobrecarga de Operadores
     bool operator==( const Canhao & );

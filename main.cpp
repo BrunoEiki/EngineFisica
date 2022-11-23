@@ -1,5 +1,6 @@
 #include <iostream>
 using std::cout;
+using std::cin;
 
 #include <locale>
 using std::setlocale;
@@ -16,29 +17,43 @@ using std::setlocale;
 #include "Foguete.h"
 #include "Foguete.cpp"
 
+void setForca( );
 
-int main(){
+int main( ) {
     setlocale(LC_ALL, "portuguese");
+    
+    cout << "\n======================================";
+    cout << "\n=== Simulador de Canhao e Foguete ===";
+    cout << "\n=====================================";
+    
+    int vida;
+    cout << "\nDisparos do Canhao: ";
+    cin >> vida;
+
+    Vetor3 forca;
+    float temp;
+
+    Canhao canhao ( vida, Vetor3( 0, 0, 0 ) );
+    cout << canhao;
+    while ( canhao.getVida( ) > 0 ) {
+        vida--;
+        cout << "\nForca em X: ";
+        cin >> temp;
+        forca.setX(temp);
+        
+        cout << "\nForca em Y: ";
+        cin >> temp;
+        forca.setY(temp);
+        
+        cout << "\nForca em Z: ";
+        cin >> temp;
+        forca.setZ(temp);
+
+        canhao.disparar( forca );
+        cout << canhao;
+    }
 
     Foguete foguete;
-
-    for (int i=0; i<35; i++) {
-        foguete.combustao();
-        if ( i % 2 == 0) {
-            cout << foguete;
-        }
-    }
+    foguete.combustao();
+    
 }
-
-// Mudanças;
-/*
-*  OK. Merge branches
-*  2. Mudar setters e getters triviais para setXYZ e getXYZ;
-*  3. Display posicao da bala no cout do canhao
-*  4. Implementar tempo
-*  5. Resetar força apos updateMateria()
-*  6. Força do Disparo tem que ser Vetor3
-*  7. Joguinho de acertar o alvo
-*  8. Criar classe Pistola
-*  9. +++ Implementar uma interface grafica
-*/
