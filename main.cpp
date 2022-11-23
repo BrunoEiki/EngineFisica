@@ -23,7 +23,7 @@ int main( ) {
     setlocale(LC_ALL, "portuguese");
     
     cout << "\n======================================";
-    cout << "\n=== Simulador de Canhao e Foguete ===";
+    cout << "\n======= Simulador de Canhao ==========";
     cout << "\n=====================================";
     
     int vida;
@@ -53,7 +53,15 @@ int main( ) {
         cout << canhao;
     }
 
+    cout << "\n===================================";
+    cout << "\n===== Simulador de Foguete ========";
+    cout << "\n==================================";
+    
     Foguete foguete;
     foguete.combustao();
+    cout << foguete;
+    foguete.combustao();
+    cout << foguete;
+
     
 }
