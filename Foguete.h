@@ -9,11 +9,6 @@ class Foguete : public Materia {
 // Sobrecarga para saida
     friend ostream& operator<<( ostream &, const Foguete & );
 
-private:
-    const int PESOFOGUETE = 300;
-    float gasolina;           // Limita a distancia que pode percorrer
-    Materia foguete;   // massa do foguete eh de 300 kg
-
 public:
 // Construtores
     Foguete( );
@@ -31,6 +26,12 @@ public:
     bool operator!=( const Foguete & );
     Foguete operator=( const Foguete & );
     Foguete operator!( );
+
+private:
+    const int PESOFOGUETE = 300;
+    float gasolina;           // Limita a distancia que pode percorrer
+    Materia foguete;   // massa do foguete eh de 300 kg
+
 };
 
 

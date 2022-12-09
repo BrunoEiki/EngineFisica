@@ -17,11 +17,6 @@ class Vetor3 {
 // SOBRECARGA DE OPERADOR
     friend ostream& operator<<( ostream& os, const Vetor3 & );
 
-private:
-    float x;
-    float y;
-    float z;
-
 public:
 // CONSTRUTORES
     Vetor3( );
@@ -61,6 +56,12 @@ public:
 // FAZER?
     float scalarProduct( );
     void vectorProduct( );
+
+private:
+    float x;
+    float y;
+    float z;
+
 };
 
 #endif

@@ -10,12 +10,6 @@ class Canhao : public Materia {
 // Sobrecarga para saida
     friend ostream& operator<<( ostream &, const Canhao & );
 
-private:
-    const float BALAPESO = 5.5;
-    int vida;                // quantidade de disparos que pode fazer
-    Vetor3 forcaDisparo;      // Forcao aplicado na bala
-    Materia bala;     // objeto a ser disparado (com massa 5.5kg)
-
 public:
 // Construtores
     Canhao( );
@@ -36,6 +30,14 @@ public:
     bool operator!=( const Canhao & );
     Canhao operator=( const Canhao & );
     Canhao operator!( );
+
+
+private:
+    const float BALAPESO = 5.5;
+    int vida;                // quantidade de disparos que pode fazer
+    Vetor3 forcaDisparo;      // Forcao aplicado na bala
+    Materia bala;     // objeto a ser disparado (com massa 5.5kg)
+
 };
 
 #endif
