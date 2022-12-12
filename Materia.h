@@ -3,10 +3,8 @@
 #ifndef MATERIA_H
 #define MATERIA_H
 
-
-class Materia : public Vetor3 {
-
-    friend ostream& operator<<( ostream& os, const Materia & );
+// ==== CLASSE ABSTRATA ====
+class Materia {
 
 public:
 // CONSTRUTORES
@@ -17,23 +15,28 @@ public:
 
     ~Materia( );
 
-// SOBRECARGA DE OPERADORES
-    bool operator==( const Materia & );
-    bool operator!=( const Materia & );
-    Materia operator=( const Materia & );
-    Materia operator!( );
+// // SOBRECARGA DE OPERADORES
+//     bool operator==( const Materia & );
+//     bool operator!=( const Materia & );
+//     Materia operator=( const Materia & );
+//     Materia operator!( );
 
 // MÉTODOS
     void updateMateria( );
-    void aplicarForca( const Vetor3 & );
     void getMassa( ) const;
     void somarMassa( float );
     Vetor3 getForca ( ) const;
 
+    void displayMateria ( ) const;
+
+// METODOS VIRTUAIS
+    virtual void aplicarForca( const Vetor3 & ) = 0;
+
+
 // PROCESSO DE TRIAGEM
     void resetarVetores( );
     
-    
+
 private:
 // eh mais facil lidar com massa infinita (objeto imovel) do que massa zero (objeto c\ aceleracao inf)
     float massaInverso;
@@ -47,11 +50,11 @@ private:
 
     const float GRAVIDADETERRA = -10.0;
 
-
 protected:
 // tempo discreto em segundos
-    int tempoInicial = 0;
-    int tempoFinal = 1; 
+    int tempoInicial;
+    int tempoFinal; 
 };
 
-#endif
+
+#endif  // MATERIA_H

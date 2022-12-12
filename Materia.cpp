@@ -4,12 +4,15 @@
 // ---------- CONSTRUTORES -------------------
 
 Materia::Materia( )
-: massaInverso( 1.0 ), forca( 0.0, GRAVIDADETERRA*(1/massaInverso), 0.0 ), tempoInicial( 0 ) {
+: massaInverso( 1.0 ), forca( 0.0, GRAVIDADETERRA*(1/massaInverso), 0.0 ), 
+  tempoInicial( 0 ), tempoFinal( 1 ) {
+
     Vetor3 a( 0, GRAVIDADETERRA, 0 );
     aceleracao = a;
 }
 
-Materia::Materia( float massa, int temp = 0 ) {
+
+Materia::Materia( float massa, int temp ) {
 
     if ( massa <= 0.0 ) {
         massaInverso = 1.0; 
@@ -31,7 +34,7 @@ Materia::Materia( float massa, int temp = 0 ) {
     tempoFinal = tempoInicial + 1;
 }
 
-Materia::Materia(Vetor3 posInicial, Vetor3 velInicial, float massa, int temp = 0 )
+Materia::Materia( Vetor3 posInicial, Vetor3 velInicial, float massa, int temp )
 : posicao( posInicial ), velocidade( velInicial ) {
 
     if ( massa <= 0.0 ) {
@@ -82,8 +85,8 @@ void Materia::updateMateria( ) {
     tempoFinal += 1;
 
 // Reseta força para o peso apenas, pois a força aplicada é momentanea
-    Vetor3 forcaAplicada( 0, GRAVIDADETERRA*(1/massaInverso), 0 );
-    forca = forcaAplicada;
+    // Vetor3 forcaAplicada( 0, GRAVIDADETERRA*(1/massaInverso), 0 );
+    // forca = forcaAplicada;
 }
 
 
@@ -93,9 +96,11 @@ void Materia::aplicarForca( const Vetor3 &forcaAplicada ) {
     this->forca = this->forca + forcaAplicada;
 }
 
+
 void Materia::somarMassa( float massa ){
     this->massaInverso = 1/(1/this->massaInverso + massa);
 }
+
 
 Vetor3 Materia::getForca( ) const {
     return forca;
@@ -119,49 +124,58 @@ void Materia::resetarVetores( ) {
     forca.setZ( 0.0 );
 }
 
-
-// ---------- SOBRECARGA DE OPERADORES -----------
-
-ostream& operator<<( ostream& os, const Materia &mOther ) {
-    os << "\nMassa Total: " << 1/(mOther.massaInverso) << "kg"
-       << "\nPosicao: " << mOther.posicao
-       << "\nVelocidade: " << mOther.velocidade
-       << "\nAceleracao: " << mOther.aceleracao
-       << "\nForca resultante: " << mOther.forca
-       << "\nTempo Total: " << mOther.tempoInicial;
-    return os;
+void Materia::displayMateria( ) const {
+    cout << "\nMassa Total: " << 1/(massaInverso) << "kg"
+       << "\nPosicao: " << posicao
+       << "\nVelocidade: " << velocidade
+       << "\nAceleracao: " << aceleracao
+       << "\nForca resultante: " << forca
+       << "\nTempo Total: " << tempoInicial;
 }
 
 
-bool Materia::operator==( const Materia &mOther ) {
-    if ( this->velocidade == mOther.velocidade && this->aceleracao == mOther.aceleracao
-         && this->posicao == mOther.posicao && this->forca == mOther.forca
-         && this->massaInverso == mOther.massaInverso ) {
-            return true;
-        }
-    return false;
-}
+// // ---------- SOBRECARGA DE OPERADORES -----------
 
-bool Materia::operator!=( const Materia &mOther ) {
-    return !( *this == mOther );
-}
+// ostream& operator<<( ostream& os, const Materia &mOther ) {
+//     os << "\nMassa Total: " << 1/(mOther.massaInverso) << "kg"
+//        << "\nPosicao: " << mOther.posicao
+//        << "\nVelocidade: " << mOther.velocidade
+//        << "\nAceleracao: " << mOther.aceleracao
+//        << "\nForca resultante: " << mOther.forca
+//        << "\nTempo Total: " << mOther.tempoInicial;
+//     return os;
+// }
 
-Materia Materia::operator=( const Materia &mOther ) {
-    this->velocidade = mOther.velocidade;
-    this->aceleracao = mOther.aceleracao;
-    this->posicao = mOther.posicao;
-    this->forca = mOther.forca;
 
-    this->massaInverso = mOther.massaInverso;
+// bool Materia::operator==( const Materia &mOther ) {
+//     if ( this->velocidade == mOther.velocidade && this->aceleracao == mOther.aceleracao
+//          && this->posicao == mOther.posicao && this->forca == mOther.forca
+//          && this->massaInverso == mOther.massaInverso ) {
+//             return true;
+//         }
+//     return false;
+// }
 
-    return *this;
-}
+// bool Materia::operator!=( const Materia &mOther ) {
+//     return !( *this == mOther );
+// }
 
-Materia Materia::operator!( ) {
-    this->velocidade = !this->velocidade;
-    this->aceleracao = !this->aceleracao;
-    this->posicao = !this->posicao;
-    this->forca = !this->forca;
+// Materia Materia::operator=( const Materia &mOther ) {
+//     this->velocidade = mOther.velocidade;
+//     this->aceleracao = mOther.aceleracao;
+//     this->posicao = mOther.posicao;
+//     this->forca = mOther.forca;
 
-    return *this;
-}
+//     this->massaInverso = mOther.massaInverso;
+
+//     return *this;
+// }
+
+// Materia Materia::operator!( ) {
+//     this->velocidade = !this->velocidade;
+//     this->aceleracao = !this->aceleracao;
+//     this->posicao = !this->posicao;
+//     this->forca = !this->forca;
+
+//     return *this;
+// }
