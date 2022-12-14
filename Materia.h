@@ -1,37 +1,56 @@
-#include "Vetor3.h"
-
+// -----------------------------------------
+// Uma vez que existe uma relação de 
+// composição entre Vetor3 e Materia,
+// as classes que herdarem MAteria vão
+// poder utilizar Vetor3 também.
+// OBS: mas cuidado para não incluir nenhum
+// arquivo .cpp duas vezes na hierarquia/main
+// -------------------------------------------
 #ifndef MATERIA_H
 #define MATERIA_H
+
+#include "Vetor3.h"
+
+#include <string>
+using std::string;
+
+#include <iostream>
+using std::cout;
 
 // ==== CLASSE ABSTRATA ====
 class Materia {
 
+// friend ostream& operator<<( ostream& os, const Materia & );
+
 public:
 // CONSTRUTORES
-    Materia( );
-    Materia( float , int );
-    Materia( Vetor3, Vetor3, float, int );
+    Materia( void );
+    Materia( float );
+    Materia( Vetor3, Vetor3, float );
     Materia( const Materia & );
 
-    ~Materia( );
+    virtual ~Materia( );
 
 // // SOBRECARGA DE OPERADORES
-//     bool operator==( const Materia & );
-//     bool operator!=( const Materia & );
-//     Materia operator=( const Materia & );
-//     Materia operator!( );
+    // bool operator==( const Materia & );
+    // bool operator!=( const Materia & );
+    // Materia operator=( const Materia & );
+    // Materia operator!( );
 
 // MÉTODOS
     void updateMateria( );
-    void getMassa( ) const;
     void somarMassa( float );
-    Vetor3 getForca ( ) const;
-
     void displayMateria ( ) const;
+    
+    void getMassa( ) const;
+    Vetor3 getForca ( ) const;
+    Vetor3 getPosicao( ) const;
+
 
 // METODOS VIRTUAIS
-    virtual void aplicarForca( const Vetor3 & ) = 0;
+    void aplicarForca( const Vetor3 & );
 
+    virtual void teste( ) = 0;
 
 // PROCESSO DE TRIAGEM
     void resetarVetores( );
@@ -52,8 +71,8 @@ private:
 
 protected:
 // tempo discreto em segundos
-    int tempoInicial;
-    int tempoFinal; 
+    int tempoInicial = 0;
+    int tempoFinal = 1; 
 };
 
 

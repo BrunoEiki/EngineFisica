@@ -1,12 +1,10 @@
-#include "Materia.h"
-
-
 #ifndef CANHAO_H
 #define CANHAO_H
 
+#include "Projetil.h"
 
 
-class Canhao : public Materia {
+class Canhao : public Projetil {
 // Sobrecarga para saida
     friend ostream& operator<<( ostream &, const Canhao & );
 
@@ -22,8 +20,6 @@ public:
 // Metodos
     void disparar( );
     void disparar( Vetor3 );
-    int getVida( );
-
 
 // Sobrecarga de Operadores
     bool operator==( const Canhao & );
@@ -34,10 +30,9 @@ public:
 
 private:
     const float BALAPESO = 5.5;
-    int vida;                // quantidade de disparos que pode fazer
+    int balaDisponivel;
     Vetor3 forcaDisparo;      // Forcao aplicado na bala
-    Materia bala;     // objeto a ser disparado (com massa 5.5kg)
-
+    
 };
 
 #endif

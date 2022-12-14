@@ -1,9 +1,8 @@
 #include "Materia.h"
 
-
 // ---------- CONSTRUTORES -------------------
 
-Materia::Materia( )
+Materia::Materia( void )
 : massaInverso( 1.0 ), forca( 0.0, GRAVIDADETERRA*(1/massaInverso), 0.0 ), 
   tempoInicial( 0 ), tempoFinal( 1 ) {
 
@@ -12,7 +11,7 @@ Materia::Materia( )
 }
 
 
-Materia::Materia( float massa, int temp ) {
+Materia::Materia( float massa ) {
 
     if ( massa <= 0.0 ) {
         massaInverso = 1.0; 
@@ -24,17 +23,10 @@ Materia::Materia( float massa, int temp ) {
     aceleracao = a;
 
     forca.setY( GRAVIDADETERRA*(1/massaInverso) );
-
-    if (temp < 0){
-        tempoInicial = 0;
-    } else{
-        tempoInicial = temp;
-    }
-
-    tempoFinal = tempoInicial + 1;
 }
 
-Materia::Materia( Vetor3 posInicial, Vetor3 velInicial, float massa, int temp )
+
+Materia::Materia( Vetor3 posInicial, Vetor3 velInicial, float massa )
 : posicao( posInicial ), velocidade( velInicial ) {
 
     if ( massa <= 0.0 ) {
@@ -48,14 +40,6 @@ Materia::Materia( Vetor3 posInicial, Vetor3 velInicial, float massa, int temp )
 
     Vetor3 forcaAplicada( 0.0, GRAVIDADETERRA*(1/massaInverso), 0.0 );
     forca = forcaAplicada;
-
-    if ( temp < 0 ) {
-        tempoInicial = 0;
-    } else {
-        tempoInicial = temp;
-    }
-
-    tempoFinal = tempoInicial + 1;
 }
 
 Materia::Materia( const Materia &mOther ) {
@@ -76,17 +60,28 @@ void Materia::updateMateria( ) {
 /*
 * Equações de Newton-Euler para dinâmica de um corpo rígido
 */
+    posicao = posicao + ( velocidade * ( tempoFinal - tempoInicial ) );
     aceleracao = aceleracao + (forca * massaInverso);
     velocidade = velocidade + aceleracao * ( tempoFinal - tempoInicial );
-    posicao = posicao + ( velocidade * ( tempoFinal - tempoInicial ) );
-
 
     tempoInicial = tempoFinal;
     tempoFinal += 1;
 
+/*
+position.addScaledVector(velocity, duration);
+// Work out the acceleration from the force.
+Vector3 resultingAcc = acceleration;
+resultingAcc.addScaledVector(forceAccum, inverseMass);
+// Update linear velocity from the acceleration.
+velocity.addScaledVector(resultingAcc, duration);
+// Impose drag.
+velocity *= real_pow(damping, duration);
+// good damping is around 1 -- like 0.995
+*/
+
 // Reseta força para o peso apenas, pois a força aplicada é momentanea
-    // Vetor3 forcaAplicada( 0, GRAVIDADETERRA*(1/massaInverso), 0 );
-    // forca = forcaAplicada;
+    Vetor3 forcaAplicada( 0, GRAVIDADETERRA*(1/massaInverso), 0 );
+    forca = forcaAplicada;
 }
 
 
@@ -104,6 +99,10 @@ void Materia::somarMassa( float massa ){
 
 Vetor3 Materia::getForca( ) const {
     return forca;
+}
+
+Vetor3 Materia::getPosicao( ) const {
+    return posicao;
 }
 
 void Materia::resetarVetores( ) {
@@ -129,7 +128,6 @@ void Materia::displayMateria( ) const {
        << "\nPosicao: " << posicao
        << "\nVelocidade: " << velocidade
        << "\nAceleracao: " << aceleracao
-       << "\nForca resultante: " << forca
        << "\nTempo Total: " << tempoInicial;
 }
 

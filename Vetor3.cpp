@@ -3,6 +3,11 @@
 #include <iostream>
 using std::cout;
 
+
+// UPDATE 13/12/2022
+// Direcao Y nao pode ficar abaixo de 0.0
+
+
 // ---------- CONSTRUTORES -------------------
 
 Vetor3::Vetor3( )
@@ -11,8 +16,10 @@ Vetor3::Vetor3( )
 }
 
 Vetor3::Vetor3( const float xin, const float yin, const float zin )
-:x( xin ), y( yin ), z( zin ) {
-
+:x( xin ), z( zin ) {
+    if ( this->y <= 0.001 ){
+        this->y = 0.0;
+    }
 }
 
 Vetor3::Vetor3( const Vetor3 &vOther ){
@@ -49,7 +56,9 @@ void Vetor3::setX( const float x ) {
     this->x = x;    
 }
 void Vetor3::setY( const float y ) {
-    this->y = y;    
+    if ( this->y <= 0.001 ){
+        this->y = 0.001;
+    }
 }
 void Vetor3::setZ( const float z ) {
     this->z = z;    
@@ -97,8 +106,11 @@ Vetor3 Vetor3::operator=( const float escalar ) {
 }
 
 Vetor3 Vetor3::operator!( ) {
+    /*
+    * Valos negativo de x e z, mas valor zero para y
+    */
     this->x *= -1;
-    this->y *= -1;
+    this->y = 0;
     this->z *= -1;
 
     return *this;
@@ -107,6 +119,9 @@ Vetor3 Vetor3::operator!( ) {
 Vetor3 Vetor3::operator+( const Vetor3 &vOther ) {
     this->x = this->x + vOther.x;
     this->y = this->y + vOther.y;
+    if ( this->y <= 0.001 ){
+        this->y = 0.0;
+    }
     this->z = this->z + vOther.z;
 
     return *this;
@@ -115,6 +130,9 @@ Vetor3 Vetor3::operator+( const Vetor3 &vOther ) {
 Vetor3 Vetor3::operator-( const Vetor3 &vOther ) {
     this->x = this->x - vOther.x;
     this->y = this->y - vOther.y;
+    if ( this->y <= 0.0 ){
+        this->y = 0.0;
+    }
     this->z = this->z - vOther.z;
 
     return *this;
@@ -123,6 +141,9 @@ Vetor3 Vetor3::operator-( const Vetor3 &vOther ) {
 Vetor3 Vetor3::operator*( const float escalar ) {
     this->x *= escalar;
     this->y *= escalar;
+    if ( this->y <= 0.001 ){
+        this->y = 0.0;
+    }
     this->z *= escalar;
 
     return *this;

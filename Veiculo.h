@@ -8,27 +8,37 @@ class Veiculo : public Materia {
 public:
 
 // CONSTRUTORES
-    Veiculo( string, string, int );
-    Veiculo( string, string, int, float );
+    Veiculo( string, string, int, int );
+    Veiculo( string, string, int, int, float );
     Veiculo( const Veiculo & );
 
+    virtual ~Veiculo( void );
+
+// // SOBRECARGA DE OPERADORES
+    // bool operator==( const Veiculo & );
+    // bool operator!=( const Veiculo & );
+    // Veiculo operator=( const Veiculo & );
+    // Veiculo operator!( );
+
+// METODO CLONE
+// virtual Veiculo* clone() const;
+
 // METODO
-    void emitirSom( );
+    void emitirSom( void );
+    int getPropelente( void );
 
 // METODOS VIRTUAIS
-    virtual void acelerar( ) = 0;
-    virtual void frear( ) = 0;
-
-
-private:
-    string modelo;
-    string som;
-    int anoCriacao;
+    virtual void acelerar( void ) = 0;
+    virtual void frear( void ) = 0;
+    
 
 protected:
-    float velocidadeLimite;
+    string modelo;
+    string som;
+    int anoCriacao;                  
+    // float velocidadeLimite;
     float propelente;
     float preco;
 };
 
-#endif    // Veiculo_h
+#endif    // VEICULO_H

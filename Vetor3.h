@@ -1,10 +1,10 @@
+#ifndef VETOR3_H
+#define VETOR3_H
+
 #include <cmath>
 
 #include <ostream>
 using std::ostream;
-
-#ifndef VETOR3_H
-#define VETOR3_H
 
 class Vetor3 {
 
@@ -54,8 +54,8 @@ public:
 
 
 // FAZER?
-    float scalarProduct( );
-    void vectorProduct( );
+    // float scalarProduct( );
+    // void vectorProduct( );
 
 private:
     float x;

@@ -3,24 +3,19 @@
 // ---------- CONSTRUTORES -------------------
 
 Canhao::Canhao( )
-:vida( 5 ), bala( BALAPESO ), forcaDisparo( 80.0, 80.0, 0.0 ) {
+: Projetil ( ) {
 
 }
 
-Canhao::Canhao( int vida, Vetor3 forca )
-:bala( BALAPESO ) {
-    if (vida < 0) {
-        forcaDisparo = 5;
-    } else {
-        this->vida = vida;
-    }
+Canhao::Canhao( int quantBala, Vetor3 forca )
+: Projetil( BALAPESO ), balaDisponivel( quantBala ) {
 
-    if (forca.getMagnitude() < 0.0) {
-        Vetor3 f( 80.0, 80.0, 0.0 ); 
-        bala.aplicarForca( f );
-    } else {
-        forcaDisparo = forca;
-    }
+    // if (forca.getMagnitude() < 0.0) {
+    //     Vetor3 f( 80.0, 80.0, 0.0 ); 
+    //     bala.aplicarForca( f );
+    // } else {
+    //     forcaDisparo = forca;
+    // }
 }
 
 Canhao::Canhao( const Canhao &cOther ) {
@@ -55,15 +50,12 @@ void Canhao::disparar( Vetor3 forca ) {
     bala.updateMateria( );
 }
 
-int Canhao::getVida( ) {
-    return vida;
-}
+
 
 // ---------- SOBRECARGA DE OPERADORES -----------
 
 ostream& operator<<( ostream& os, const Canhao &cOther ) {
     os << "\n--------STATUS----------"
-       << "\nVida: " << cOther.vida << " disparos restantes"
        << cOther.bala
        << "\n-----------------------";
     return os;
