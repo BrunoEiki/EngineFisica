@@ -1,11 +1,11 @@
 <mxfile host="65bd71144e">
     <diagram id="76DP_UWShPvK50uWAOmz" name="Página-1">
-        <mxGraphModel dx="4403" dy="1124" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1313" dy="569" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="4VAHJokIAV4qInDK7anF-1" value="Vetor3" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="850" y="193" width="390" height="88" as="geometry"/>
+                    <mxGeometry x="850" y="178" width="390" height="88" as="geometry"/>
                 </mxCell>
                 <mxCell id="4VAHJokIAV4qInDK7anF-2" value="- x : float&#10;- y : float&#10;- z : float&#10;&#10;&#10;" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="4VAHJokIAV4qInDK7anF-1" vertex="1">
                     <mxGeometry y="26" width="390" height="54" as="geometry"/>
@@ -14,31 +14,28 @@
                     <mxGeometry y="80" width="390" height="8" as="geometry"/>
                 </mxCell>
                 <mxCell id="4VAHJokIAV4qInDK7anF-5" value="Materia&#10;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="211" y="170" width="380" height="534" as="geometry"/>
+                    <mxGeometry x="211" y="170" width="380" height="500" as="geometry"/>
                 </mxCell>
-                <mxCell id="4VAHJokIAV4qInDK7anF-6" value="- massaInverso : float&#10;- velocidade : Vetor3 &#10;- aceleracao : Vetor3&#10;- posicao : Vetor3&#10;- forca : Vetor3" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="4VAHJokIAV4qInDK7anF-5" vertex="1">
-                    <mxGeometry y="26" width="380" height="94" as="geometry"/>
-                </mxCell>
-                <mxCell id="34" value="- massaInverso : float&#10;- velocidade : Vetor3 &#10;- aceleracao : Vetor3&#10;- posicao : Vetor3&#10;- forca : Vetor3" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" vertex="1" parent="4VAHJokIAV4qInDK7anF-5">
-                    <mxGeometry y="120" width="380" height="94" as="geometry"/>
+                <mxCell id="4VAHJokIAV4qInDK7anF-6" value="- massaInverso : float&#10;- velocidade : Vetor3 &#10;- aceleracao : Vetor3&#10;- posicao : Vetor3&#10;- forca : Vetor3&#10;-direcao : Vetor3&#10;- gravidadeterra : float&#10;# tempoInicial : int&#10;# tempoFinal : int" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="4VAHJokIAV4qInDK7anF-5" vertex="1">
+                    <mxGeometry y="26" width="380" height="154" as="geometry"/>
                 </mxCell>
                 <mxCell id="4VAHJokIAV4qInDK7anF-7" value="" style="line;strokeWidth=1;fillColor=#f5f5f5;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#666666;fontColor=#333333;" parent="4VAHJokIAV4qInDK7anF-5" vertex="1">
-                    <mxGeometry y="214" width="380" height="8" as="geometry"/>
+                    <mxGeometry y="180" width="380" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="4VAHJokIAV4qInDK7anF-8" value="&#10;+ Materia()&#10;+ Materia(float)   &#10;+ Materia(Vetor3, Vetor3, float)&#10;+ Materia(Materia &amp;)&#10;+ {virtual} ~Materia()&#10;------------ TIRAR SOBRECARGA DEPOIS ------------&#10;+ operator &lt;&lt; (ostream &amp;, Materia &amp;) : &lt;&lt;friend&gt;&gt; ostream&amp;&#10;+ operator == (Materia &amp;) : bool &#10;+ operator != (Materia &amp;) : bool &#10;+ operator = (Materia &amp;) : Materia&#10;+ operator ! () : Materia&#10;&#10;+ updateMateria() : void&#10;+ aplicarForca(Vetor3 &amp;) : void&#10;+ displayMateria() : void&#10;+ resetarVetores() : void&#10;+ getMassa(): void&#10;+ getForca(): Vetor3&#10;+ getPosicao(): Vetor3&#10;&#10;&#10;&#10;" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="4VAHJokIAV4qInDK7anF-5" vertex="1">
-                    <mxGeometry y="222" width="380" height="312" as="geometry"/>
+                <mxCell id="4VAHJokIAV4qInDK7anF-8" value="&#10;+ Materia()&#10;+ Materia(float)   &#10;+ Materia(Vetor3, Vetor3, float)&#10;+ Materia(Materia &amp;)&#10;+ {virtual} ~Materia()&#10;&#10;+ updateMateria() : void&#10;+ somarMassa(float) : void&#10;+ aplicarForca(Vetor3 &amp;) : void&#10;+ displayMateria() : void&#10;+ resetarVetores() : void&#10;+ getMassaInv(): void&#10;+ getForca(): Vetor3&#10;+ getAceleracao() : Vetor3&#10;+ getVelocidade() : Vetor3&#10;+ getTempo() : int&#10;+ getPosicao(): Vetor3&#10;&#10;+ {virtual} checarLimites() : bool&#10;&#10;" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="4VAHJokIAV4qInDK7anF-5" vertex="1">
+                    <mxGeometry y="188" width="380" height="312" as="geometry"/>
                 </mxCell>
                 <mxCell id="4VAHJokIAV4qInDK7anF-9" value="Carro" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="-413" y="1155" width="370" height="320" as="geometry"/>
+                    <mxGeometry x="-413" y="1155" width="370" height="400" as="geometry"/>
                 </mxCell>
-                <mxCell id="4VAHJokIAV4qInDK7anF-10" value="+ BALAPESO : float &#10;+ vida : int&#10;+ forcaDisparo : Vetor3&#10;+ bala : Materia" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="4VAHJokIAV4qInDK7anF-9" vertex="1">
-                    <mxGeometry y="26" width="370" height="84" as="geometry"/>
+                <mxCell id="4VAHJokIAV4qInDK7anF-10" value="- rodaSaude: int" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="4VAHJokIAV4qInDK7anF-9" vertex="1">
+                    <mxGeometry y="26" width="370" height="44" as="geometry"/>
                 </mxCell>
                 <mxCell id="4VAHJokIAV4qInDK7anF-11" value="" style="line;strokeWidth=1;fillColor=#f5f5f5;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#666666;fontColor=#333333;" parent="4VAHJokIAV4qInDK7anF-9" vertex="1">
-                    <mxGeometry y="110" width="370" height="8" as="geometry"/>
+                    <mxGeometry y="70" width="370" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="4VAHJokIAV4qInDK7anF-12" value="+ Canhao () &#10;+ Canhao (int, Vetor3)&#10;+ Canhao (const Canhao &amp;)&#10;+ ~Canhao ()&#10;&#10;+ disparar () : void&#10;+ disparar (Vetor3) : void&#10;+ getVida () : int&#10;&#10;+ operator &lt;&lt; (ostream &amp;, const Canhao &amp;) : &lt;&lt;friend&gt;&gt; ostream&amp;&#10;+ operator == (Canhao &amp;) : bool&#10;+ operator != (Canhao &amp;) : bool&#10;+ operator = (Canhao &amp;) : Canhao&#10;+ operator ! () : Canhao" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="4VAHJokIAV4qInDK7anF-9" vertex="1">
-                    <mxGeometry y="118" width="370" height="202" as="geometry"/>
+                <mxCell id="4VAHJokIAV4qInDK7anF-12" value="+ Carro (string, string ,int, int)&#10;+ Carro (cstring, string ,int, int, float)&#10;+ Carro (const Carro&amp;)&#10;+ ~Carro ()&#10;&#10;+ operator &lt;&lt; (ostream &amp;, const Carro &amp;) : &lt;&lt;friend&gt;&gt; ostream&amp;&#10;+ operator == (Carro &amp;) : bool&#10;+ operator != (Carro &amp;) : bool&#10;+ operator = (Carro &amp;) : Carro&#10;+ operator ! () : Carro&#10;&#10;+ acelerar() : void &#10;+ frear () : void&#10;+ checarLimite() : bool&#10;+ trocarRoda() : void&#10;+ reporPropelente () : void&#10;+ getTempo() : int&#10;+ getSaudeRoda() : int&#10;&#10;&#10;&#10;&#10;" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="4VAHJokIAV4qInDK7anF-9" vertex="1">
+                    <mxGeometry y="78" width="370" height="322" as="geometry"/>
                 </mxCell>
                 <mxCell id="4VAHJokIAV4qInDK7anF-30" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;exitX=0.544;exitY=0.012;exitDx=0;exitDy=0;exitPerimeter=0;fillColor=#f5f5f5;strokeColor=#666666;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="4VAHJokIAV4qInDK7anF-9" target="14" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">
@@ -47,16 +44,16 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="7" value="Foguete" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="7" y="1155" width="350" height="290" as="geometry"/>
+                    <mxGeometry x="7" y="1155" width="350" height="350" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="+ PESOFOGUETE : int &#10;+ gasolina : float&#10;+ foguete : Materia" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="7" vertex="1">
+                <mxCell id="8" value="- statusAltura : string" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="7" vertex="1">
                     <mxGeometry y="26" width="350" height="64" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="" style="line;strokeWidth=1;fillColor=#f5f5f5;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#666666;fontColor=#333333;" parent="7" vertex="1">
                     <mxGeometry y="90" width="350" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="+ Foguete () &#10;+ Foguete (int)&#10;+ Foguete (const Foguete &amp;)&#10;+ ~Foguete ()&#10;&#10;+ combustao () : void&#10;&#10;+ operator &lt;&lt; (ostream &amp;, Foguete &amp;) : &lt;&lt;friend&gt;&gt; ostream&amp;&#10;+ operator == (Foguete &amp;) : bool&#10;+ operator != (Foguete &amp;) : bool&#10;+ operator = (Foguete &amp;) : Foguete&#10;+ operator ! () : Foguete" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="7" vertex="1">
-                    <mxGeometry y="98" width="350" height="192" as="geometry"/>
+                <mxCell id="10" value="+ Foguete (string, string, int, int) &#10;+ Foguete (string, string, int, int, float)&#10;+ Foguete (const Foguete &amp;)&#10;+ ~Foguete ()&#10;&#10;+ atualizarStatues() : void&#10;+ get alturaStatus() : string&#10;+ acelerar () : void&#10;+ frear () : void&#10;+ checarLimite () : bool&#10;&#10;+ operator &lt;&lt; (ostream &amp;, Foguete &amp;) : &lt;&lt;friend&gt;&gt; ostream&amp;&#10;+ operator == (Foguete &amp;) : bool&#10;+ operator != (Foguete &amp;) : bool&#10;+ operator = (Foguete &amp;) : Foguete&#10;+ operator ! () : Foguete" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="7" vertex="1">
+                    <mxGeometry y="98" width="350" height="252" as="geometry"/>
                 </mxCell>
                 <mxCell id="11" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;exitX=0.544;exitY=0.012;exitDx=0;exitDy=0;exitPerimeter=0;fillColor=#f5f5f5;strokeColor=#666666;entryX=0.769;entryY=1.004;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="7" target="17" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">
@@ -64,8 +61,8 @@
                         <mxPoint x="183" y="920" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="4VAHJokIAV4qInDK7anF-4" value="+ Vetor3()&#10;+ Vetor3(float, float, float)&#10;+ Vetor3(Vetor3 &amp;)&#10;+ ~Vetor3()&#10;&#10;+ operator &lt;&lt; (ostream&amp;, Vetor3 &amp;) :  &lt;&lt;friend&gt;&gt; ostream&amp;&#10;+ operator == (Vetor3 &amp;) : bool &#10;+ operator != (Vetor3 &amp;) : bool    &#10;+ operator = (Vetor3 &amp;) : Vetor3&#10;+ operator ! () : Vetor3 &#10;+ operator + (Vetor3 &amp;) : Vetor3&#10;+ operator - (Vetor3 &amp;) : Vetor3 &#10;+ operator * (float) : Vetor3 &#10;&#10;+ getMagnitude() : float&#10;+ getX() : float&#10;+ getY() : float&#10;+ getZ() : float  &#10;+ setX (float) : void&#10;+ setY (float) : void&#10;+ setZ (float) : void&#10;&#10;" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="1" vertex="1">
-                    <mxGeometry x="851" y="282" width="390" height="312" as="geometry"/>
+                <mxCell id="4VAHJokIAV4qInDK7anF-4" value="+ Vetor3()&#10;+ Vetor3(float, float, float)&#10;+ Vetor3(Vetor3 &amp;)&#10;+ ~Vetor3()&#10;&#10;+ operator &lt;&lt; (ostream&amp;, Vetor3 &amp;) :  &lt;&lt;friend&gt;&gt; ostream&amp;&#10;+ operator == (Vetor3 &amp;) : bool &#10;+ operator != (Vetor3 &amp;) : bool    &#10;+ operator = (Vetor3 &amp;) : Vetor3&#10;+ operator ! () : Vetor3 &#10;+ operator + (Vetor3 &amp;) : Vetor3&#10;+ operator - (Vetor3 &amp;) : Vetor3 &#10;+ operator * (float) : Vetor3 &#10;&#10;+ calcularMagnitude(Vetor3 &amp;) : float&#10;+ calcularDirecao(Vetor3 &amp;) : Vetor3 &#10;&#10;+ getX() : float&#10;+ getY() : float&#10;+ getZ() : float  &#10;+ setX (float) : void&#10;+ setY (float) : void&#10;+ setZ (float) : void&#10;&#10;" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="1" vertex="1">
+                    <mxGeometry x="851" y="267" width="390" height="338" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="" style="endArrow=open;html=1;rounded=0;align=center;verticalAlign=bottom;dashed=1;endFill=0;labelBackgroundColor=none;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="4VAHJokIAV4qInDK7anF-5" target="4VAHJokIAV4qInDK7anF-4" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -74,16 +71,16 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="14" value="Veiculo&#10;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="-197" y="780" width="390" height="340" as="geometry"/>
+                    <mxGeometry x="-197" y="763" width="390" height="350" as="geometry"/>
                 </mxCell>
-                <mxCell id="15" value="# modelo : string&#10;# som : string&#10;# anoCriacao : int &#10;# velocidadeLimite : float&#10;# propelente : float &#10;# preco : float" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="14" vertex="1">
+                <mxCell id="15" value="# modelo : string&#10;# som : string&#10;# anoCriacao : int &#10;# propelente : float &#10;# preco : float" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="14" vertex="1">
                     <mxGeometry y="26" width="390" height="104" as="geometry"/>
                 </mxCell>
                 <mxCell id="16" value="" style="line;strokeWidth=1;fillColor=#f5f5f5;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;fontColor=#333333;strokeColor=#666666;" parent="14" vertex="1">
                     <mxGeometry y="130" width="390" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" value="+ Veiculo (string, string, int, int) &#10;+ Veiculo (string, string, int, int, float)&#10;+ Veiculo (const Veiculo &amp;)&#10;+ {virtual} ~Veiculo ()&#10;&#10;+ operator &lt;&lt; (ostream &amp;, const Veiculo &amp;) : &lt;&lt;friend&gt;&gt; ostream&amp;&#10;+ operator == (Projetil &amp;) : bool&#10;+ operator != (Projetil &amp;) : bool&#10;+ operator = (Projetil &amp;) : Projetil&#10;+ operator ! () : Projetil&#10;&#10;+ {virtual} acelerar () : void&#10;+ {virtual} frear () : void" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="14" vertex="1">
-                    <mxGeometry y="138" width="390" height="202" as="geometry"/>
+                <mxCell id="17" value="+ Veiculo (string, string, int, int) &#10;+ Veiculo (string, string, int, int, float)&#10;+ Veiculo (const Veiculo &amp;)&#10;+ {virtual} ~Veiculo ()&#10;&#10;+ {virtual} acelerar () : void&#10;+ {virtual} frear () : void&#10;&#10;+ getModelo () : string&#10;+ getSom () : string&#10;+ getAnoCriacao () : int&#10;+getPropelente () : int&#10;+ getPreco () : float&#10;+ emitirSom () : void" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="14" vertex="1">
+                    <mxGeometry y="138" width="390" height="212" as="geometry"/>
                 </mxCell>
                 <mxCell id="18" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fillColor=#f5f5f5;strokeColor=#666666;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="14" target="4VAHJokIAV4qInDK7anF-5" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">
@@ -91,17 +88,17 @@
                         <mxPoint x="650.0000000000002" y="630" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="19" value="Projetil" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="784" width="390" height="308" as="geometry"/>
+                <mxCell id="19" value="CorpoCeleste" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="764" width="390" height="310" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="+ field: type" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="19" vertex="1">
-                    <mxGeometry y="26" width="390" height="74" as="geometry"/>
+                <mxCell id="20" value="- nome : string&#10;- raio : float&#10;- constantegravitacional : float" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="19" vertex="1">
+                    <mxGeometry y="26" width="390" height="54" as="geometry"/>
                 </mxCell>
                 <mxCell id="21" value="" style="line;strokeWidth=1;fillColor=#f5f5f5;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;fontColor=#333333;strokeColor=#666666;" parent="19" vertex="1">
-                    <mxGeometry y="100" width="390" height="8" as="geometry"/>
+                    <mxGeometry y="80" width="390" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="22" value="+ Projetil () &#10;+ Projetil (float)&#10;+ Projetil (const Projetil &amp;)&#10;+ ~Projetil ()&#10;&#10;+ operator &lt;&lt; (ostream &amp;, const Projetil &amp;) : &lt;&lt;friend&gt;&gt; ostream&amp;&#10;+ operator == (Projetil &amp;) : bool&#10;+ operator != (Projetil &amp;) : bool&#10;+ operator = (Projetil &amp;) : Projetil&#10;+ operator ! () : Projetil&#10;&#10;+ {virtual} disparar () : void&#10;+ {virtual} carregar () : void" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="19" vertex="1">
-                    <mxGeometry y="108" width="390" height="200" as="geometry"/>
+                <mxCell id="22" value="+ CorpoCeleste (float) &#10;+ CorpoCeleste (float, float)&#10;+ CorpoCeleste (const CorpoCeleste &amp;)&#10;+ ~CorpoCeleste ()&#10;&#10;+ operator &lt;&lt; (ostream &amp;, const CorpoCeleste &amp;) : &lt;&lt;friend&gt;&gt; ostream&amp;&#10;+ operator == (CorpoCeleste &amp;) : bool&#10;+ operator != (CorpoCeleste &amp;) : bool&#10;+ operator = (CorpoCeleste &amp;) : CorpoCeleste&#10;+ operator ! () : CorpoCeleste&#10;&#10;+ aplicarGravidade (Materia &amp;) : void&#10;+ aplicarGravidade (CorpoCeleste &amp;) : void&#10;+ getNome() : string&#10;+ bool checarLimite()" style="text;strokeColor=#666666;fillColor=#f5f5f5;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#333333;" parent="19" vertex="1">
+                    <mxGeometry y="88" width="390" height="222" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fillColor=#f5f5f5;strokeColor=#666666;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="1" source="19" target="4VAHJokIAV4qInDK7anF-5" edge="1">
                     <mxGeometry width="160" relative="1" as="geometry">

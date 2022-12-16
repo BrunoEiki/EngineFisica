@@ -1,11 +1,11 @@
 // -----------------------------------------
-// Uma vez que existe uma relação de 
-// composição entre Vetor3 e Materia,
-// as classes que herdarem MAteria vão
-// poder utilizar Vetor3 também.
-// OBS: mas cuidado para não incluir nenhum
-// arquivo .cpp duas vezes na hierarquia/main
+// Uma vez que existe uma relação de composição entre Vetor3 
+// e Materia, as classes que herdarem MAteria vão
+// poder utilizar Vetor3 também. OBS: mas cuidado para não 
+// incluir nenhum arquivo .cpp duas vezes na hierarquia/main
 // -------------------------------------------
+#pragma once
+
 #ifndef MATERIA_H
 #define MATERIA_H
 
@@ -17,12 +17,14 @@ using std::string;
 #include <iostream>
 using std::cout;
 
+#include <vector>
+using std::vector;
+
 // ==== CLASSE ABSTRATA ====
-class Materia {
-
-// friend ostream& operator<<( ostream& os, const Materia & );
-
+class Materia
+{
 public:
+
 // CONSTRUTORES
     Materia( void );
     Materia( float );
@@ -31,30 +33,26 @@ public:
 
     virtual ~Materia( );
 
-// // SOBRECARGA DE OPERADORES
-    // bool operator==( const Materia & );
-    // bool operator!=( const Materia & );
-    // Materia operator=( const Materia & );
-    // Materia operator!( );
-
 // MÉTODOS
     void updateMateria( );
     void somarMassa( float );
     void displayMateria ( ) const;
-    
-    void getMassa( ) const;
-    Vetor3 getForca ( ) const;
-    Vetor3 getPosicao( ) const;
 
-
-// METODOS VIRTUAIS
     void aplicarForca( const Vetor3 & );
-
-    virtual void teste( ) = 0;
-
-// PROCESSO DE TRIAGEM
     void resetarVetores( );
-    
+
+// GETTERS
+    Vetor3 getForca      ( ) const { return forca; };
+    Vetor3 getAceleracao ( ) const { return aceleracao; };
+    Vetor3 getVelocidade ( ) const { return velocidade; };
+    Vetor3 getPosicao    ( ) const { return posicao; };
+    Vetor3 getDirecao    ( ) const { return direcao; };
+    float getMassaInv    ( ) const { return massaInverso; };
+    int getTempo         ( ) const { return tempoFinal; };
+
+
+// METODO VIRTUAL
+    virtual bool checarLimite ( ) = 0;
 
 private:
 // eh mais facil lidar com massa infinita (objeto imovel) do que massa zero (objeto c\ aceleracao inf)
@@ -65,6 +63,7 @@ private:
     Vetor3 velocidade;
     Vetor3 aceleracao;
     Vetor3 posicao;
+    Vetor3 direcao;
     Vetor3 forca;
 
     const float GRAVIDADETERRA = -10.0;

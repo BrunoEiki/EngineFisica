@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef VETOR3_H
 #define VETOR3_H
 
@@ -32,7 +34,7 @@ public:
     Vetor3 operator=(const Vetor3 & );
     Vetor3 operator!( );
 
-    Vetor3 operator=( const float escalar );
+    Vetor3 operator=( const float );
     Vetor3 operator+( const Vetor3 & );
     Vetor3 operator-( const Vetor3 & );
     Vetor3 operator*( const float );
@@ -43,7 +45,9 @@ public:
 
 
 // MÉTODOS
-    float getMagnitude( ) const;
+    float calcularMagnitude( Vetor3 & );
+    Vetor3 calcularDirecao( Vetor3 & );
+
     float getX( ) const;
     float getY( ) const;
     float getZ( ) const;

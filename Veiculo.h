@@ -1,10 +1,13 @@
+#pragma once
+
 #ifndef VEICULO_H
 #define VEICULO_H
 
 #include "Materia.h"
 
 // ==== CLASSE ABSTRATA ====
-class Veiculo : public Materia {
+class Veiculo : public Materia 
+{
 public:
 
 // CONSTRUTORES
@@ -12,32 +15,30 @@ public:
     Veiculo( string, string, int, int, float );
     Veiculo( const Veiculo & );
 
-    virtual ~Veiculo( void );
+    virtual ~Veiculo( );
 
-// // SOBRECARGA DE OPERADORES
-    // bool operator==( const Veiculo & );
-    // bool operator!=( const Veiculo & );
-    // Veiculo operator=( const Veiculo & );
-    // Veiculo operator!( );
-
-// METODO CLONE
-// virtual Veiculo* clone() const;
 
 // METODO
-    void emitirSom( void );
-    int getPropelente( void );
+    void emitirSom ( void );
+
+// GETTERS
+    string getModelo     ( void ) const  { return modelo; };
+    string getSom        ( void ) const  { return som; };
+    int    getAnoCriacao ( void ) const  { return anoCriacao; };
+    int    getPropelente ( void ) const  { return propelente; };
+    float  getPreco      ( void ) const  { return preco; }
+
 
 // METODOS VIRTUAIS
     virtual void acelerar( void ) = 0;
     virtual void frear( void ) = 0;
-    
+    // checarLimite( ) : de Materia.h
 
 protected:
     string modelo;
     string som;
     int anoCriacao;                  
-    // float velocidadeLimite;
-    float propelente;
+    int propelente;
     float preco;
 };
 

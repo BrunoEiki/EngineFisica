@@ -1,24 +1,6 @@
-// #include <stdlib.h>
-// using std::system;
-
 #include <iostream>
 using std::cout;
 using std::cin;
-
-#include <vector>
-using std::vector;
-
-#include <locale>
-using std::setlocale;
-
-// #include "Vetor3.h"
-// #include "Vetor3.cpp"
-
-// #include "Materia.h"
-// #include "Materia.cpp"
-
-// #include "Veiculo.h"
-// #include "Veiculo.cpp"
 
 #include "Carro.h"
 #include "Carro.cpp"
@@ -26,185 +8,172 @@ using std::setlocale;
 #include "Foguete.h"
 #include "Foguete.cpp"
 
-int main( ) {
-    setlocale(LC_ALL, "portuguese");
+#include "CorpoCeleste.h"
+#include "CorpoCeleste.cpp"
 
-    vector< Veiculo* > veiculos;
-    
+#include "Estrela.h"
+#include "Estrela.cpp"
+
+#include "Planeta.h"
+#include "Planeta.cpp"
+
+int main( ) 
+{
     int numVeiculo;
-    bool carroOuFoguete = true;
-
-    string modelo;
-    string som;
-    int ano;
-    int propelente;
 
     int op = 0;
+    vector< Veiculo* > veiculos ( 5 );
+    vector< CorpoCeleste* > corposCelestes ( 5 );
 
-    while ( op != 4){
-        // system("CLS");        
-        cout << "\n===================================";
-        cout << "\n====== Simulador de Fisica ========";
-        cout << "\n==================================";
+    while ( op != 4 ) 
+    {
+        cout << "\n===================================="
+             << "\n======= Simulador de Fisica ========"
+             << "\n===================================="
+             << "\n|                                  |"
+             << "\n| 1. TESTE DE VELOCIDADE DO CARRO  |"
+             << "\n| 2. TESTE DE ALTURA DO FOGUETE    |"
+             << "\n| 3. CLASSIFICAR ESTRELAS          |"
+             << "\n|__________________________________|"
+             << "\n\n";
 
-        cout << "\n\n1. Teste de Velocidade do Veiculo";
-        cout << "\n2. Alguma coisa";
-        cout << "\n3. Lorem Ipsum Socorro";
-        cout << "\n4. Sair";
-        cout << "\n";
-
-        cout << "Digite sua escolha: ";
+        cout << "\nDigite sua escolha: ";
         cin >> op;
 
-        switch( op ){
+        switch( op )
+        {
             case 1:
             {
-                cout << "\nNumero de Veiculos: ";
-                cin >> numVeiculo;
-                if ( numVeiculo < 0 ) {
-                    numVeiculo = 2;
-                }
-
-                // ---------- EXEMPLO DE ENTRADAS ----------- 
-                veiculos[ 0 ] = new Carro( "Fiat", "Vruuummmmm!!", 2022, 50 );
-                veiculos[ 1 ] = new Carro( "Honda", "Vruuuuuuum", 2006, 50 );
-                veiculos[ 2 ] = new Carro( "UFPA", "Vrum", 2007, 50 );
-                // veiculos[ 3 ] = new Foguete( "NASA", "BUMMMMMM!!", 2022, 1000 );
-                // veiculos[ 4 ] = new Foguete( "Fiat", "FUSSHHHHH!!", 2022, 8000 );
-
-                for ( size_t i = 0; i < veiculos.size( ); i++ ) {
-                    Carro *derivedPtr = dynamic_cast< Carro * >( veiculos[ 0 ] );
-                    derivedPtr->acelerar( );
-                }
-
-                    // cout << "\nCarro[0] ou Foguete[1]: ";
-                    // cin >> carroOuFoguete;
-
-                    // cout << "Nome do Modelo: ";
-                    // cin >> modelo;
-
-                    // cout << "Som do Veiculo: ";
-                    // cin >> som;
-
-                    // cout << "Ano de Fabricacao: ";
-                    // cin >> ano;
-
-                    // cout << "Quantidade de Propelente: ";
-                    // cin >> propelente;
-
-                    // veiculos.push_back( veiculo );
-
-                    // if ( carroOuFoguete ) {
-                    //     Veiculo *veiculo = new Carro( modelo, som, ano, propelente );
-                    //     veiculos.push_back( veiculo );            
-                    // }     
-                    
-                    // } else{
-                    //     Veiculo *veiculo = new Foguete( modelo, som, ano, propelente );
-                    //     veiculos.push_back( veiculo );
-                    // }
-
-                // }
+                // ----------------- EXEMPLO DE ENTRADAS ------------------ 
+                veiculos[ 0 ] = new Carro( "Fiat", "SOM_CARRO!!", 2022, 50 );
+                veiculos[ 1 ] = new Carro( "Honda", "SOM_CARRO", 2006, 20 );
+                veiculos[ 2 ] = new Carro( "UFPA", "SOM_CARRO", 2007, 50 );
+                veiculos[ 3 ] = new Foguete( "NASA", "SOM_FOGUETE!!", 2022, 2000 );
+                veiculos[ 4 ] = new Foguete( "Fiat", "SOM_FOGUETE!!", 2022, 8000 );
+                // ------------------------------------------------------------
                 
-                // for ( size_t i = 0; i < veiculos.size( ); i++ ) {
-                //     // veiculos[ i ]->mostrar( );
-                //     Carro *derivedPtr = dynamic_cast< Carro * >( veiculos[ i ] );
-                    
-                //     if ( derivedPtr != nullptr ){
-                        
-                    //     cout << " entrou";
-                    //     // derivedPtr->emitirSom( );
-                    //     // while ( derivedPtr->getDistancia( ) <= 80 && derivedPtr->getTempo( ) < 11 ){
-                    //     // while ( derivedPtr->getTempo( ) < 11 ){
-                    //     //     derivedPtr->acelerar( );
-                    //     // }
-
-                    //     // if ( derivedPtr->getTempo( ) == 11 ){
-                    //     //     cout << "\nTempo estourado! Velocidade do veiculo insuficiente.";
-                    //     // }
-
-                    //     // }
-                //     }
-                // }
-
-                for ( size_t j = 0; j < veiculos.size(); j++ )
+                cout << "\n===================================";
+                cout << "\n====== Teste de Velocidade ========";
+                cout << "\n==================================";
+                
+                for ( size_t i = 0; i < veiculos.size( ); i++ ) 
                 {
+                    Carro *derivedPtr = dynamic_cast< Carro * >( veiculos[ i ] );
 
-                    cout << "\nDeletando objeto de classe "
+                    if ( derivedPtr != nullptr ) 
+                    {
+                        cout << "\n\n========= CARRO " << veiculos[ i ]->getModelo( ) << " ==========\n";
+
+                        // Repete metodo ACELERAR() ate que o veiculo ultrapasse dada posicao
+                        while ( derivedPtr->getPosicao( ).getX( ) < 30 && derivedPtr->getPropelente( ) > 1 )
+                        {
+                            derivedPtr->acelerar( );
+                            cout << "\nPosicao atual: " << derivedPtr->getPosicao( ).getX( ); 
+                        }
+                        
+                        cout << "\n\nTempo Final: " << derivedPtr->getTempo( );
+                        
+                        if ( derivedPtr->getPropelente( ) < 1 ) 
+                            cout << "\n\nO propelente do carro terminou!";
+                        
+                        if ( derivedPtr->getPosicao( ).getX( ) < 30 )
+                            cout << "\n\nO Carro nao foi rapido o suficiente! Tempo esgotado.";
+                        else
+                            cout << "\n\nParabens! O Carro completou o teste antes do tempo limite.";
+                    }
+                }
+                cout << "\n\n--------------------------------";
+                for ( size_t j = 0; j < veiculos.size(); j++ ) 
+                {
+                    cout << "\n\nDeletando objeto de classe "
                         << typeid( *veiculos[ j ] ).name( ) << "...";
 
                     delete veiculos[ j ];
                 }
-                veiculos.clear(); // precisa?
                 break;
             } 
 
             case 2:
             {
+                // ----------------- EXEMPLO DE ENTRADAS ------------------ 
+                veiculos[ 0 ] = new Carro( "Fiat", "SOM_CARRO!!", 2022, 50 );
+                veiculos[ 1 ] = new Carro( "Honda", "SOM_CARRO", 2006, 20 );
+                veiculos[ 2 ] = new Carro( "UFPA", "SOM_CARRO", 2007, 50 );
+                veiculos[ 3 ] = new Foguete( "NASA", "SOM_FOGUETE!!", 2022, 2000 );
+                veiculos[ 4 ] = new Foguete( "Voyager", "SOM_FOGUETE!!", 2022, 8000 );
+                // ------------------------------------------------------------
 
-                // Carro fiat2022( "Fiat", "Vruuummmmm!!", 2022, 50 );
-                // fiat2022.acelerar( );
-                // fiat2022.acelerar( );
-                // fiat2022.acelerar( );
-                // fiat2022.frear( );
-                // fiat2022.frear( );
-                // fiat2022.reporPropelente( );
-                // fiat2022.frear( );
-                // fiat2022.frear( );
-                // fiat2022.frear( );
-                // fiat2022.frear( );
-                // fiat2022.frear( );
-                // fiat2022.frear( );
-                // fiat2022.frear( );
+                cout << "\n===================================";
+                cout << "\n======== Teste de Altura ==========";
+                cout << "\n===================================";
 
+                for ( size_t i = 0; i < veiculos.size( ); i++ )
+                {
+                    Foguete *derivedPtr = dynamic_cast< Foguete * >( veiculos[ i ] );
+
+                    if ( derivedPtr != nullptr ) 
+                    {
+                        cout << "\n\n======= FOGUETE " << derivedPtr->getModelo( ) << " =========";
+                        
+                        // Repete metodo ACELERAR() ate que o veiculo ultrapasse dada posicao
+                        while ( derivedPtr->getPropelente( ) > 500 )
+                        {
+                            derivedPtr->acelerar( );
+                            cout << "\nPosicao: " << derivedPtr->getPosicao( ).getY( ) << "km";
+                        }
+                        cout << "\n\nTempo Final: " << derivedPtr->getTempo( );
+                        cout << "\n[Status -> " << derivedPtr->getAlturaStatus( ) << "]";
+                    }
+                }
+
+                cout << "\n\n--------------------------------";
+                for ( size_t j = 0; j < veiculos.size(); j++ ) 
+                {
+                    cout << "\n\nDeletando objeto de classe "
+                        << typeid( *veiculos[ j ] ).name( ) << "...";
+
+                    delete veiculos[ j ];
+                }
+                break;
+            }
+            case 3:
+            {
+                // ----------------- EXEMPLO DE ENTRADAS ------------------ 
+                corposCelestes[ 0 ] = new Planeta( "Terra", 24, 1 );
+                corposCelestes[ 1 ] = new Planeta( "Jupiter", 10, 12 );
+                corposCelestes[ 2 ] = new Planeta( "Netuno", 16, 165 );
+                corposCelestes[ 3 ] = new Estrela( "Sol", 5780, 1.9e30, 6.9e5 );
+                corposCelestes[ 4 ] = new Estrela( "Vega", 9602, 4.2e30, 1.6e6 );
+                // --------------------------------------------------------
+
+
+                cout << "\n===================================";
+                cout << "\n====== Classificar Estrelas =======";
+                cout << "\n===================================";
+                
+                for ( size_t i = 0; i < corposCelestes.size( ); i++ )
+                {
+                    Estrela *derivedPtr = dynamic_cast< Estrela * >( corposCelestes[ i ] );
+
+                    if ( derivedPtr != nullptr ) 
+                    {
+                        cout << "\n\n======= ESTRELA " << derivedPtr->getNome( ) << " =========";
+                        derivedPtr->classificarEstrela( );
+                    }
+                }
+
+                cout << "\n\n--------------------------------";
+                for ( size_t j = 0; j < corposCelestes.size(); j++ ) 
+                {
+                    cout << "\n\nDeletando objeto de classe "
+                        << typeid( *corposCelestes[ j ] ).name( ) << "...";
+
+                    delete corposCelestes[ j ];
+                }
                 break;
             }
         }
         cin.get();
         cin.get();
     }
-
-    // cout << "\n===================================";
-    // cout << "\n===== Simulador de Foguete ========";
-    // cout << "\n==================================";
-    
-    // Foguete foguete;
-    // foguete.combustao();
-    // cout << foguete;
-    // foguete.combustao();
-    // cout << foguete;
-
-
-
-    // cout << "\n======================================";
-    // cout << "\n======= Simulador de Canhao ==========";
-    // cout << "\n=====================================";
-    
-    // int vida;
-    // cout << "\nDisparos do Canhao: ";
-    // cin >> vida;
-
-    // Vetor3 forca;
-    // float temp;
-
-    // Canhao canhao ( vida, Vetor3( 0, 0, 0 ) );
-    // cout << canhao;
-    // while ( canhao.getVida( ) > 0 ) {
-    //     vida--;
-    //     cout << "\nForca em X: ";
-    //     cin >> temp;
-    //     forca.setX(temp);
-        
-    //     cout << "\nForca em Y: ";
-    //     cin >> temp;
-    //     forca.setY(temp);
-        
-    //     cout << "\nForca em Z: ";
-    //     cin >> temp;
-    //     forca.setZ(temp);
-
-    //     canhao.disparar( forca );
-    //     cout << canhao;
-    // }
-    
 }

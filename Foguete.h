@@ -1,46 +1,51 @@
+#pragma once
+
 #ifndef FOGUETE_H
 #define FOGUETE_H
 
 #include "Veiculo.h"
 
-class Foguete : public Veiculo {
-// Sobrecarga para saida
-    // friend ostream& operator<<( ostream &, const Foguete & );
+class Foguete : public Veiculo 
+{
+    friend ostream& operator<<( ostream &, const Foguete & );
 
 public:
-// Construtores
+// CONSTRUTORES
     Foguete( string, string, int, int );
     Foguete( string, string, int, int, float );
     Foguete( const Foguete & );
 
-// Destrutor
+// DESTRUTOR
     ~Foguete( );
 
-// Metodos
+// METODOS
+    void atualizarStatus( );
+
+// DECLARAR METODOS VIRTUAIS HERDADOS
     void acelerar( );
     void frear( );
+    bool checarLimite( );
 
-// Sobrecarga de Operadores
-    // bool operator==( const Foguete & );
-    // bool operator!=( const Foguete & );
-    // Foguete operator=( const Foguete & );
-    // Foguete operator!( );
+// GETTER
+    string getAlturaStatus ( ) const { return statusAltura; };
 
-    void teste( );
-    // void atualizarStatus( );
+
+// SOBRECARGA DE OPERADORES
+    bool operator==( const Foguete & );
+    bool operator!=( const Foguete & );
+    Foguete operator=( const Foguete & );
+    Foguete operator!( );
 
 private:
-    const int PESOFOGUETE = 300;
-    int distancia;
     string statusAltura = "Troposfera";
-    // Troposfera [0 - 18km)
-    // Estratosfera [18 - 50km]
-    // Mesosfera [50 - 90]
-    // Termosfera [90 - 800]
-    // Exosfera [800 - 3000]
-    // Espaco 
 
+    // ******* possiveis status *******
+      //  Troposfera   [0   -  18   km ]
+      // Estratosfera  (18  -  50   km ]
+      //   Mesosfera   (50  -  90   km ]
+      //  Termosfera   (90  -  800  km ]
+      //   Exosfera    (800 -  3000 km ]
 };
 
 
-#endif
+#endif   // FOGUETE_H
